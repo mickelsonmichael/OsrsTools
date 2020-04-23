@@ -23,7 +23,7 @@ jobs:
       - name: DotNet Build and Publish
         run: |
           dotnet build --configuration Release src/web/Web.csproj
-          dotnet publish -c Release -o '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/publish' 
+          dotnet publish -c Release -o '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/publish' src/web/Web.csproj
           
       - name: 'Deploy to Azure'
         uses: azure/webapps-deploy@v2
