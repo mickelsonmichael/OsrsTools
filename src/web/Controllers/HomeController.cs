@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using web.Models;
+using Services.Interfaces;
 
 namespace web.Controllers
 {
@@ -21,6 +22,20 @@ namespace web.Controllers
         public IActionResult Index()
         {
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult GetHiScores(string playerName,
+            [FromServices] IHiScoreService hiScoreService)
+        {
+            if (string.IsNullOrWhiteSpace(playerName))
+            {
+                return View("Index");
+            }
+
+            var hiScore = hiScoreService.GetHiScore(playerName);
+
+            return View(hiScore);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

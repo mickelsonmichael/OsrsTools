@@ -1,0 +1,25 @@
+@model Domain.HiScore
+
+<partial name="_HiScoreForm" />
+
+<table class="table table-striped table-condensed">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Level</th>
+            <th>Rank</th>
+            <th>Experience</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var score in Model.Skills)
+        {
+            <tr>
+                <td>@score.Name</td>
+                <td>@score.Level</td>
+                <td>@score.Rank</td>
+                <td>@score.XP</td>
+            </tr>
+        }
+    </tbody>
+</table>
