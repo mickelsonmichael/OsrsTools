@@ -1,0 +1,48 @@
+{ 
+    "Kandarin" : {
+        "Easy" : {
+            "Agility" : 20,
+            "Farming" : 13,
+            "Fishing" : 16
+        },
+        "Medium" : {
+            "Agility" : 36,
+            "Cooking" : 43,
+            "Farming" : 26,
+            "Fishing" : 46,
+            "Fletching" : 50,
+            "Herblore" : 48,
+            "Magic" : 45,
+            "Mining" : 30,
+            "Ranged" : 40,
+            "Strength" : 22,
+            "Thieving" : 47
+        },
+        "Hard" : {
+            "Agility" : 60,
+            "Construction" : 50,
+            "Crafting" : 10,
+            "Defence" : 70,
+            "Firemaking" : 65,
+            "Fishing" : 70,
+            "Fletching" : 70,
+            "Prayer" : 70,
+            "Magic" : 56,
+            "Smithing" : 75,
+            "Strength" : 50,
+            "Thieving" : 53,
+            "Woodcutting" : 60
+        },
+        "Elite" : {
+            "Agility" : 60,
+            "Cooking" : 80,
+            "Crafting" : 85,
+            "Farming" : 79,
+            "Firemaking" : 85,
+            "Fishing" : 76,
+            "Herblore" : 86,
+            "Magic" : 87,
+            "Smithing" : 90
+        }
+    }
+}

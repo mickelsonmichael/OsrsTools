@@ -27,6 +27,7 @@ namespace web
         {
             services.AddControllersWithViews();
             services.AddSingleton<IHiScoreService, HiScoreService>();
+            services.AddSingleton<IAchievementService, AchievementService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

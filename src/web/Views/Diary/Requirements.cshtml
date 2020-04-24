@@ -1,0 +1,27 @@
+@model Domain.DiaryRequirements
+@using System.Linq;
+
+<h2>@Model.Levels.PlayerName
+    
+</h2>
+
+    <h3>Kandarin</h3>
+
+    <h4>Easy</h4>
+
+    <table class="table table-striped table-sm">
+        <thead>
+            <tr>
+                <th>Skill</th>
+                <th>Requirement</th>
+                <th>Current</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Agility</td>
+                <td>@Model.Diaries.Kandarin.Easy.Agility</td>
+                <td>@Model.Levels.Skills.Single(x => x.Name == "Agility").Level</td>
+            </tr>
+        </tbody>
+    </table>
