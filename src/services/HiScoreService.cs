@@ -12,17 +12,18 @@ namespace Services
 {
     public class HiScoreService : IHiScoreService
     {
-        private WebClient _client = new WebClient();
         const string _apiUrl = "https://secure.runescape.com/m=hiscore_oldschool/index_lite.ws?player=";
+        private WebClient _client = new WebClient();
         
         public HiScore GetHiScore(string playerName)
         {
-            var test = _client.DownloadString(_apiUrl + playerName);
-            var skills = ParseHighScore(test);
+            var dataString = _client.DownloadString(_apiUrl + playerName);
+            System.Console.WriteLine(dataString);
 
-            Console.WriteLine(test);
-
-            return new HiScore(playerName, skills);
+            return new HiScore(
+                playerName, 
+                ParseHighScore(dataString)
+            );
         }
 
         private IEnumerable<Skill> ParseHighScore(string data)
