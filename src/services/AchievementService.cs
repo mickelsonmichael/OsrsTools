@@ -33,6 +33,7 @@ namespace Services
             using var reader = new StreamReader(resource);
 
             var json = reader.ReadToEnd();
+            System.Console.WriteLine(json);
             return JsonConvert.DeserializeObject<Diaries>(json);
         }
 

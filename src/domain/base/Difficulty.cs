@@ -1,104 +1,83 @@
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace Domain
 {
     public class Difficulty
     {
-        public short Overall { get; }
-        
-        public byte Attack { get; }
-        
-        public byte Defence { get; }
-        
-        public byte Hitpoints { get; }
-        
-        public byte Ranged { get; }
-        
-        public byte Prayer { get; }
-        
-        public byte Magic { get; }
-        
-        public byte Cooking { get; }
-        
-        public byte Woodcutting { get; }
-        
-        public byte Fletching { get; }
-        
-        public byte Fishing { get; }
-        
-        public byte Firemaking { get; }
-        
-        public byte Crafting { get; }
-        
-        public byte Smithing { get; }
-        
-        public byte Mining { get; }
-        
-        public byte Herblore { get; }
-        
-        public byte Agility { get; }
-        
-        public byte Thieving { get; }
-        
-        public byte Slayer { get; }
-        
-        public byte Farming { get; }
-        
-        public byte Runecrafting { get; }
-        
-        public byte Hunter { get; }
-        
-        public byte Construction { get; }
+        [JsonProperty]
+        public short Overall { get; private set; }
+        [JsonProperty]
+        public byte Attack { get; private set; }
+        [JsonProperty]
+        public byte Defence { get; private set; }
+        [JsonProperty]
+        public byte Hitpoints { get; private set; }
+        [JsonProperty]
+        public byte Ranged { get; private set; }
+        [JsonProperty]
+        public byte Prayer { get; private set; }
+        [JsonProperty]
+        public byte Magic { get; private set; }
+        [JsonProperty]
+        public byte Cooking { get; private set; }
+        [JsonProperty]
+        public byte Woodcutting { get; private set; }
+        [JsonProperty]
+        public byte Fletching { get; private set; }
+        [JsonProperty]
+        public byte Fishing { get; private set; }
+        [JsonProperty]
+        public byte Firemaking { get; private set; }
+        [JsonProperty]
+        public byte Crafting { get; private set; }
+        [JsonProperty]
+        public byte Smithing { get; private set; }
+        [JsonProperty]
+        public byte Mining { get; private set; }
+        [JsonProperty]
+        public byte Herblore { get; private set; }
+        [JsonProperty]
+        public byte Agility { get; private set; }
+        [JsonProperty]
+        public byte Thieving { get; private set; }
+        [JsonProperty]
+        public byte Slayer { get; private set; }
+        [JsonProperty]
+        public byte Farming { get; private set; }
+        [JsonProperty]
+        public byte Runecrafting { get; private set; }
+        [JsonProperty]
+        public byte Hunter { get; private set; }
+        [JsonProperty]
+        public byte Construction { get; private set; }
 
-        public Difficulty(
-            short overall,
-            byte attack,
-            byte defence,
-            byte hitpoints,
-            byte ranged,
-            byte prayer,
-            byte magic,
-            byte cooking,
-            byte woodcutting,
-            byte fletching,
-            byte fishing,
-            byte firemaking,
-            byte crafting,
-            byte smithing,
-            byte mining,
-            byte herblore,
-            byte agility,
-            byte thieving,
-            byte slayer,
-            byte farming,
-            byte runecrafting,
-            byte hunter,
-            byte construction
-        )
+
+        public IEnumerable<(string Name, short Level)> GetSkills()
         {
-            Overall = overall;
-            Attack = attack;
-            Defence = defence;
-            Hitpoints = hitpoints;
-            Ranged = ranged;
-            Prayer = prayer;
-            Magic = magic;
-            Cooking = cooking;
-            Woodcutting = woodcutting;
-            Fletching = fletching;
-            Fishing = fishing;
-            Firemaking = firemaking;
-            Crafting = crafting;
-            Smithing = smithing;
-            Mining = mining;
-            Herblore = herblore;
-            Agility = agility;
-            Thieving = thieving;
-            Slayer = slayer;
-            Farming = farming;
-            Runecrafting = runecrafting;
-            Hunter = hunter;
-            Construction = construction;
+            yield return (nameof(Overall), Overall);
+            yield return (nameof(Attack), Attack);
+            yield return (nameof(Defence), Defence);
+            yield return (nameof(Hitpoints), Hitpoints);
+            yield return (nameof(Ranged), Ranged);
+            yield return (nameof(Prayer), Prayer);
+            yield return (nameof(Magic), Magic);
+            yield return (nameof(Cooking), Cooking);
+            yield return (nameof(Woodcutting), Woodcutting);
+            yield return (nameof(Fletching), Fletching);
+            yield return (nameof(Fishing), Fishing);
+            yield return (nameof(Firemaking), Firemaking);
+            yield return (nameof(Crafting), Crafting);
+            yield return (nameof(Smithing), Smithing);
+            yield return (nameof(Mining), Mining);
+            yield return (nameof(Herblore), Herblore);
+            yield return (nameof(Agility), Agility);
+            yield return (nameof(Thieving), Thieving);
+            yield return (nameof(Slayer), Slayer);
+            yield return (nameof(Farming), Farming);
+            yield return (nameof(Runecrafting), Runecrafting);
+            yield return (nameof(Hunter), Hunter);
+            yield return (nameof(Construction), Construction);
         }
     }
 }

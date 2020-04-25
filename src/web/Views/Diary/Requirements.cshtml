@@ -1,27 +1,41 @@
 @model Domain.DiaryRequirements
 @using System.Linq;
+@using System.Collections.Generic;
 
-<h2>@Model.Levels.PlayerName
-    
+<h2>@Model.Levels.PlayerName 
 </h2>
 
-    <h3>Kandarin</h3>
+    @foreach (var diary in Model.Diaries.GetDiaries())
+    {
+        <div class="d-inline-block">
+            <h3>@diary.Name</h3>
 
-    <h4>Easy</h4>
+            @foreach (var diffi in @diary.Diary.GetDifficulties())
+            {
+                <div class="d-inline-block">
+                    <h4>@diffi.Name</h4>
 
-    <table class="table table-striped table-sm">
-        <thead>
-            <tr>
-                <th>Skill</th>
-                <th>Requirement</th>
-                <th>Current</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Agility</td>
-                <td>@Model.Diaries.Kandarin.Easy.Agility</td>
-                <td>@Model.Levels.Skills.Single(x => x.Name == "Agility").Level</td>
-            </tr>
-        </tbody>
-    </table>
+                    <table class="table-striped table-sm table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Skill</th>
+                                <th>Requirement</th>
+                                <th>Current</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var skill in @diffi.Difficulty.GetSkills().Where(x => x.Level > 0))
+                            {
+                                var currentLevel = Model.Levels.Skills.Single(x => x.Name == skill.Name).Level;
+                                <tr class="@(currentLevel >= skill.Level ? "table-success" : "table-danger")">
+                                    <td>@skill.Name</td>
+                                    <td>@skill.Level</td>
+                                    <td>@currentLevel</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+        </div>
+    }

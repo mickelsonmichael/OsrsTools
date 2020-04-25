@@ -18,6 +18,7 @@ namespace Services
         public HiScore GetHiScore(string playerName)
         {
             var dataString = _client.DownloadString(_apiUrl + playerName);
+            System.Console.WriteLine(dataString);
 
             return new HiScore(
                 playerName, 

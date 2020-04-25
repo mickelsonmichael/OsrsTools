@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using Domain.Base;
+
 namespace Domain
 {
     public class DiaryRequirements
