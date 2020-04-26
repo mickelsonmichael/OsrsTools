@@ -308,51 +308,6 @@
             ]
         }
     },
-    "Karamja": {
-        "Easy": {
-            "Agility": 15,
-            "Mining": 40
-        },
-        "Medium": {
-            "Agility": 12,
-            "Cooking": 16,
-            "Farming": 27,
-            "Fishing": 65,
-            "Hunter": 41,
-            "Mining": 40,
-            "Woodcutting": 50,
-            "Quests": [
-                "The Grand Tree",
-                "Shilo Village"
-            ]
-        },
-        "Hard": {
-            "Agility": 53,
-            "Cooking": 53,
-            "Mining": 52,
-            "Ranged": 42,
-            "Runecraft": 44,
-            "Slayer": 50,
-            "Smithing": 40,
-            "Strength": 50,
-            "Thieving": 50,
-            "Woodcutting": 34,
-            "Magic": 59,
-            "Quests": [
-                "Tai Bwo Wannai Trio",
-                "Family Crest",
-                "Waterfall Quest",
-                "Heroes' Quest",
-                "Shilo Village",
-                "Underground Pass"
-            ]
-        },
-        "Elite": {
-            "Farming": 72,
-            "Herblore": 87,
-            "Runecraft": 91
-        }
-    },
     "Kandarin" : {
         "Easy" : {
             "Agility" : 20,
@@ -426,6 +381,111 @@
                 "Barbarian Training - Firemaking",
                 "Family Crest",
                 "Lunar Diplomacy"
+            ]
+        }
+    },
+    "Karamja": {
+        "Easy": {
+            "Agility": 15,
+            "Mining": 40
+        },
+        "Medium": {
+            "Agility": 12,
+            "Cooking": 16,
+            "Farming": 27,
+            "Fishing": 65,
+            "Hunter": 41,
+            "Mining": 40,
+            "Woodcutting": 50,
+            "Quests": [
+                "The Grand Tree",
+                "Shilo Village"
+            ]
+        },
+        "Hard": {
+            "Agility": 53,
+            "Cooking": 53,
+            "Mining": 52,
+            "Ranged": 42,
+            "Runecraft": 44,
+            "Slayer": 50,
+            "Smithing": 40,
+            "Strength": 50,
+            "Thieving": 50,
+            "Woodcutting": 34,
+            "Magic": 59,
+            "Quests": [
+                "Tai Bwo Wannai Trio",
+                "Family Crest",
+                "Waterfall Quest",
+                "Heroes' Quest",
+                "Shilo Village",
+                "Underground Pass"
+            ]
+        },
+        "Elite": {
+            "Farming": 72,
+            "Herblore": 87,
+            "Runecraft": 91
+        }
+    },
+    "Kourend": {
+        "Easy": {
+            "Construction": 25,
+            "Fishing": 20,
+            "Herblore": 12,
+            "Mining": 15,
+            "Thieving": 25,
+            "Quests": [
+                "Druidic Rutial",
+                "Client of Kourend"
+            ]
+        },
+        "Medium": {
+            "Agility": 49,
+            "Crafting": 30,
+            "Farming": 45,
+            "Firemaking": 50,
+            "Fishing": 43,
+            "Hunter": 53,
+            "Mining": 42,
+            "Woodcutting": 50,
+            "Quests": [
+                "Eagles' Peak",
+                "The Depths of Despair",
+                "The Queen of Thieves",
+                "Tale of the Righteous",
+                "The Forsaken Tower",
+                "The Ascent of Arceuus",
+                "Fairytale I - Growing Pains"
+            ]
+        },
+        "Hard": {
+            "Farming": 74,
+            "Magic": 66,
+            "Mining": 65,
+            "Slayer": 62,
+            "Smithing": 70,
+            "Thieving": 49,
+            "Woodcutting": 60,
+            "Quests": [
+                "Architectural Alliance",
+                "Dream Mentor"
+            ]
+        },
+        "Elite": {
+            "Cooking": 84,
+            "Crafting": 38,
+            "Farming": 85,
+            "Fishing": 82,
+            "Fletching": 40,
+            "Magic": 90,
+            "Mining": 38,
+            "Runecraft": 77,
+            "Slayer": 95,
+            "Woodcutting": 90,
+            "Quests": [
+                "Monkey Madness I"
             ]
         }
     }

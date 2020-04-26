@@ -11,13 +11,15 @@ namespace Domain
         public Diary Fremennik { get; }
         public Diary Desert { get; }
         public Diary Karamja { get; }
+        public Diary Kourend { get; }
 
         public Diaries(Diary kandarin,
             Diary ardougne,
             Diary falador,
             Diary fremennik,
             Diary desert,
-            Diary karamja)
+            Diary karamja,
+            Diary kourend)
         {
             Kandarin = kandarin;
             Ardougne = ardougne;
@@ -25,6 +27,7 @@ namespace Domain
             Fremennik = fremennik;
             Desert = desert;
             Karamja = karamja;
+            Kourend = kourend;
         }
 
         public IEnumerable<(string Name, Diary Diary)> GetDiaries()
@@ -32,8 +35,9 @@ namespace Domain
             yield return (nameof(Ardougne), Ardougne);
             yield return (nameof(Falador), Falador);
             yield return (nameof(Fremennik), Fremennik);
-            yield return (nameof(Karamja), Karamja);
             yield return (nameof(Kandarin), Kandarin);
+            yield return (nameof(Karamja), Karamja);
+            yield return (nameof(Kourend), Kourend);
         }
     }
 }
