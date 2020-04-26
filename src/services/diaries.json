@@ -308,6 +308,51 @@
             ]
         }
     },
+    "Karamja": {
+        "Easy": {
+            "Agility": 15,
+            "Mining": 40
+        },
+        "Medium": {
+            "Agility": 12,
+            "Cooking": 16,
+            "Farming": 27,
+            "Fishing": 65,
+            "Hunter": 41,
+            "Mining": 40,
+            "Woodcutting": 50,
+            "Quests": [
+                "The Grand Tree",
+                "Shilo Village"
+            ]
+        },
+        "Hard": {
+            "Agility": 53,
+            "Cooking": 53,
+            "Mining": 52,
+            "Ranged": 42,
+            "Runecraft": 44,
+            "Slayer": 50,
+            "Smithing": 40,
+            "Strength": 50,
+            "Thieving": 50,
+            "Woodcutting": 34,
+            "Magic": 59,
+            "Quests": [
+                "Tai Bwo Wannai Trio",
+                "Family Crest",
+                "Waterfall Quest",
+                "Heroes' Quest",
+                "Shilo Village",
+                "Underground Pass"
+            ]
+        },
+        "Elite": {
+            "Farming": 72,
+            "Herblore": 87,
+            "Runecraft": 91
+        }
+    },
     "Kandarin" : {
         "Easy" : {
             "Agility" : 20,
