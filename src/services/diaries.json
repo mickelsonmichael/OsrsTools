@@ -370,7 +370,13 @@
             "Mining" : 30,
             "Ranged" : 40,
             "Strength" : 22,
-            "Thieving" : 47
+            "Thieving" : 47,
+            "Quests": [
+                "Alfred Grimhand's Barcrawl",
+                "Elemental Workshop II",
+                "Waterfall Quest",
+                "Fairytale I - Growing Pains"
+            ]
         },
         "Hard" : {
             "Agility" : 60,
@@ -385,7 +391,25 @@
             "Smithing" : 75,
             "Strength" : 50,
             "Thieving" : 53,
-            "Woodcutting" : 60
+            "Woodcutting" : 60,
+            "Boostable": [
+                "Fishing",
+                "Smithing",
+                "Woodcutting"
+            ],
+            "Quests": [
+                "Barbarian Training - Fishing",
+                "Barbarian Training - Firemaking",
+                "Barbarian Training - Smithing",
+                "Tai Bwo Wannai Trio",
+                "Knight Waves Training Grounds",
+                "Priest in Peril",
+                "Waterfall Quest",
+                "Temple of Ikov",
+                "The Tourist Trap", 
+                "The Dig Site",
+                "Troll Stronghold"
+            ]
         },
         "Elite" : {
             "Agility" : 60,
@@ -396,7 +420,13 @@
             "Fishing" : 76,
             "Herblore" : 86,
             "Magic" : 87,
-            "Smithing" : 90
+            "Smithing" : 90,
+            "Quests": [
+                "Barbarian Training - Smithing",
+                "Barbarian Training - Firemaking",
+                "Family Crest",
+                "Lunar Diplomacy"
+            ]
         }
     }
 }
