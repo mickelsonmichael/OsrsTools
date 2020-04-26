@@ -543,5 +543,88 @@
             "Thieving": 78,
             "Woodcutting": 75
         }
+    },
+    "Morytania": {
+        "Easy": {
+            "Cooking": 12,
+            "Crafting": 15,
+            "Combat": 20,
+            "Farming": 23,
+            "Slayer": 15,
+            "Ironman": [
+                { "Farming": 47 }
+            ],
+            "Quests": [
+                "The Restless Ghost",
+                "Priest in Peril",
+                "Nature Spirit"
+            ]
+        },
+        "Medium": {
+            "Agility": 40,
+            "Cooking": 40,
+            "Herblore": 22,
+            "Hunter": 29,
+            "Slayer": 42,
+            "Smithing": 50,
+            "Woodcutting": 45,
+            "Quests": [
+                "Dwarf Cannon",
+                "Ghosts Ahoy",
+                "Lair of Tarn Razorlor",
+                "Cabin Fever",
+                "In Search of the Myreque"
+            ]
+        },
+        "Hard": {
+            "Agility": 71,
+            "Construction": 50,
+            "Defence": 70,
+            "Farming": 53,
+            "Firemaking": 50,
+            "Magic": 66,
+            "Mining": 57,
+            "Prayer": 70,
+            "Slayer": 58,
+            "Woodcutting": 50,
+            "Boostable": [
+                "Agility",
+                "Farming",
+                "Mining"
+            ],
+            "Quests": [
+                "Haunted Mine",
+                "Desert Treasure",
+                "Creature of Fenkenstrain",
+                "Cabin Fever",
+                "Freeing Pirate Pete",
+                "In Aid of the Myreque",
+                "King's Ransom"
+            ]
+        },
+        "Elite": {
+            "Attack": 70,
+            "Crafting": 84,
+            "Defence": 70,
+            "Firemaking": 80,
+            "Fishing": 96,
+            "Magic": 83,
+            "Ranged": 70,
+            "Slayer": 85,
+            "Strength": 76,
+            "Boostable": [
+                "Crafting",
+                "Firemaking",
+                "Fishing",
+                "Magic",
+                "Slayer"
+            ],
+            "Quests": [
+                "Barbarian Training - Fishing",
+                "Shades of Mort'ton",
+                "In Aid of the Myreque",
+                "Lunar Diplomacy"
+            ]
+        }
     }
 }
