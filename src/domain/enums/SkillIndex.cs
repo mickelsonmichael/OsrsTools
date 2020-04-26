@@ -23,7 +23,7 @@ namespace Domain.Enums
         Thieving = 18,
         Slayer = 19,
         Farming = 20,
-        Runecrafting = 21,
+        Runecraft = 21,
         Hunter = 22,
         Construction = 23
     }
