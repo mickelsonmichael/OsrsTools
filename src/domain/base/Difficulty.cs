@@ -51,7 +51,12 @@ namespace Domain
         public byte Hunter { get; private set; }
         [JsonProperty]
         public byte Construction { get; private set; }
-
+        [JsonProperty]
+        public string[] Quests { get; private set; }
+        [JsonProperty]
+        public string[] Boostable { get; private set; }
+        [JsonProperty]
+        public short QuestPoints { get; private set; }
 
         public IEnumerable<(string Name, short Level)> GetSkills()
         {
