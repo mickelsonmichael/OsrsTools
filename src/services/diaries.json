@@ -48,7 +48,7 @@
             "Hunter": 59,
             "Magic": 66,
             "Mining": 52,
-            "Paryer": 42,
+            "Prayer": 42,
             "Ranged": 60,
             "Runecraft": 65,
             "Smithing": 68,
@@ -200,7 +200,7 @@
             "Herblore": 52,
             "Mining": 60,
             "Prayer": 70,
-            "runecraft": 56,
+            "Runecraft": 56,
             "Slayer": 72,
             "Thieving": 58,
             "Woodcutting": 71,
@@ -487,6 +487,61 @@
             "Quests": [
                 "Monkey Madness I"
             ]
+        }
+    },
+    "Lumbridge": {
+        "Easy": {
+            "Agility": 10,
+            "Firemaking": 15,
+            "Fishing": 15,
+            "Mining": 15,
+            "Runecraft": 5,
+            "Slayer": 7,
+            "Woodcutting": 15,
+            "Quests": [
+                "Rune Mysteries",
+                "Cook's Assistant"
+            ]
+        },
+        "Medium": {
+            "Agility": 20,
+            "Crafting": 38,
+            "Fishing": 30,
+            "Hunter": 42,
+            "Magic": 31,
+            "Ranged": 50,
+            "Runecraft": 23,
+            "Strength": 19,
+            "Thieving": 38,
+            "Woodcutting": 30,
+            "Quests": [
+                "Animal Magnetism",
+                "Fairytale I - Growing Pains"
+            ]
+        },
+        "Hard": {
+            "Agility": 46,
+            "Crafting": 70,
+            "Farming": 63,
+            "Firemaking": 65,
+            "Magic": 60,
+            "Prayer": 52,
+            "Runecraft": 59,
+            "Woodcutting": 57,
+            "Quests": [
+                "Tears of Guthix",
+                "Another Slice of H.A.M.",
+                "Recipe for Disaster"
+            ]
+        },
+        "Elite": {
+            "Agility": 70,
+            "Ranged": 70,
+            "Runecraft": 76,
+            "Smithing": 88,
+            "Strength": 70,
+            "Thieving": 78,
+            "Woodcutting": 75
         }
     }
 }
