@@ -426,7 +426,10 @@
         "Elite": {
             "Farming": 72,
             "Herblore": 87,
-            "Runecraft": 91
+            "Runecraft": 91,
+            "Boostable": [
+              "Runecraft"
+            ]
         }
     },
     "Kourend": {
