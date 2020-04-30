@@ -16,12 +16,12 @@
 
         @foreach (var diffi in @diary.Diary.GetDifficulties())
         {
-            <div class="col-12 col-md-6 col-lg-3 px-1 mb-1">
+            <div class="col-12 col-sm-6 col-lg-3 px-1 mb-1">
                 <div class="card">
                     <div class="card-body">
                         <h4>@diffi.Name</h4>
 
-                            <table class="table table-striped table-hover table-sm">
+                            <table class="table table-striped table-hover table-sm mb-1">
                                 <thead>
                                     <tr>
                                         <th>Skill</th>
@@ -40,6 +40,24 @@
                                     }
                                 </tbody>
                             </table>
+
+                            <hr />
+
+                            <h5>Quests</h5>
+                            @if (diffi.Difficulty.Quests?.Count() > 0)
+                            {
+                                <ul>
+                                    @foreach (var quest in @diffi.Difficulty.Quests)
+                                    {
+                                        <li>@quest</li>
+                                    }
+                                </ul>
+                            }
+                            else 
+                            {
+                                <em>No quest requirements</em>
+                            }
+                            
                     </div>
                 </div>
             </div>
