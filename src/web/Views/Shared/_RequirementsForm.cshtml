@@ -1,0 +1,10 @@
+<form asp-action="Index" asp-controller="Diary" asp-area="" class="form-inline ml-auto">
+    <input type="text" 
+        class="form-control mr-1" 
+        name="playerName" 
+        placeholder="Search player name"
+        required
+        value="@(ViewData.ContainsKey("PlayerName") ? ViewData["PlayerName"] : "")" />
+
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
