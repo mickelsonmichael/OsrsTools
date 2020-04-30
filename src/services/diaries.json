@@ -626,5 +626,67 @@
                 "Lunar Diplomacy"
             ]
         }
+    },
+    "Varrock": {
+        "Easy": {
+            "Agility": 13,
+            "Crafting": 8,
+            "Fishing": 20,
+            "Mining": 15,
+            "Runecraft": 9,
+            "Thieving": 5,
+            "Quests": [
+                "Rune Mysteries"
+            ]
+        },
+        "Medium": {
+            "Agility": 30,
+            "Combat": 40,
+            "Crafting": 36,
+            "Farming": 30,
+            "Firemaking": 40,
+            "Herblore": 10,
+            "Magic": 25,
+            "Thieving": 25,
+            "Ironmen": [
+                { "Magic": 49 }
+            ],
+            "QuestPoints": 32,
+            "Quests": [
+                "Enlightened Journey",
+                "A Soul's Bane",
+                "Tree Gnome Village",
+                "Gertrude's Cat",
+                "The Dig Site",
+                "Garden of Tranquility"
+            ]
+        },
+        "Hard": {
+            "Agility": 51,
+            "Construction": 50,
+            "Farming": 68,
+            "Firemaking": 60,
+            "Hunter": 66,
+            "Magic": 54,
+            "Prayer": 52,
+            "Ranged": 40,
+            "Thieving": 53,
+            "Woodcutting": 60,
+            "Quests": [
+                "Desert Treasure"
+            ]
+        },
+        "Elite": {
+            "Cooking": 95,
+            "Fletching": 81,
+            "Herblore": 90,
+            "Magic": 86,
+            "Runecraft": 78,
+            "Smithing": 89,
+            "Quests": [
+                "The Tourist Trap",
+                "Dream Mentor"
+            ]
+        }
     }
 }

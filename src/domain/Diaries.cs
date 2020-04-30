@@ -14,6 +14,7 @@ namespace Domain
         public Diary Kourend { get; }
         public Diary Lumbridge { get; }
         public Diary Morytania { get; }
+        public Diary Varrock { get; }
 
         public Diaries(Diary kandarin,
             Diary ardougne,
@@ -23,7 +24,7 @@ namespace Domain
             Diary karamja,
             Diary kourend,
             Diary lumbridge,
-            Diary morytania)
+            Diary morytania, Diary varrock)
         {
             Kandarin = kandarin;
             Ardougne = ardougne;
@@ -34,6 +35,7 @@ namespace Domain
             Kourend = kourend;
             Lumbridge = lumbridge;
             Morytania = morytania;
+            Varrock = varrock;
         }
 
         public IEnumerable<(string Name, Diary Diary)> GetDiaries()
@@ -46,6 +48,7 @@ namespace Domain
             yield return (nameof(Kourend), Kourend);
             yield return (nameof(Lumbridge), Lumbridge);
             yield return (nameof(Morytania), Morytania);
+            yield return (nameof(Varrock), Varrock);
         }
     }
 }
