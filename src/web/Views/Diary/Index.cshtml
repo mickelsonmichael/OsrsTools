@@ -5,9 +5,13 @@
 @{
     ViewData["Title"] = "Requirements";
     ViewData["PlayerName"] = @Model.Levels.PlayerName;
+    int id = 0;
+    var diaries = Model.Diaries.GetDiaries();
 }
 
 <div class="alert alert-info">
+    <strong>Click on a diary name to expand it.</strong>
+    <br />
     Any skills marked with an asterisk (*) are boostable. A skill with a slash indicates the level for normal accounts
     and ironman/ironwoman accounts respectively (e.g. normal/iron). The row will be marked as yellow if the account
     does not meet the ironman/ironwoman requirement.
@@ -15,10 +19,15 @@
 
 <br />
 
-@foreach (var diary in Model.Diaries.GetDiaries())
+@foreach (var diary in diaries)
 {
-    <h3>@diary.Name</h3>
-    <div class="row">
+    var diaryId = "diary" + id++;
+    <h3>
+        <a data-toggle="collapse" href="#@diaryId" role="button" aria-expanded="false" aria-controls="@diaryId">
+            @diary.Name
+        </a>
+    </h3>
+    <div class="row collapse" id="@diaryId">
 
         @foreach (var diffi in @diary.Diary.GetDifficulties())
         {
