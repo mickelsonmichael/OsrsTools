@@ -771,5 +771,55 @@
                 "Mourning's End Part I"
             ]
         }
+    },
+    "Wilderness": {
+        "Easy": {
+            "Agility": 15,
+            "Magic": 21,
+            "Mining": 15,
+            "Quests": [
+                "Enter the Abyss"
+            ]
+        },
+        "Medium": {
+            "Strength": 60,
+            "Magic": 60,
+            "Mining": 55,
+            "Slayer": 50,
+            "Smithing": 50,
+            "Woodcutting": 61,
+            "Quests": [
+                "Fishing Contest",
+                "Dwarf Cannon"
+            ]
+        },
+        "Hard": {
+            "Agility": 64,
+            "Fishing": 53,
+            "Hunter": 67,
+            "Magic": 66,
+            "Slayer": 68,
+            "Smithing": 75,
+            "Quests": [
+                "Death Plateau",
+                "The Mage Arena"
+            ]
+        },
+        "Elite": {
+            "Agility": 60,
+            "Cooking": 90,
+            "Firemaking": 75,
+            "Fishing": 85,
+            "Magic": 96,
+            "Mining": 56,
+            "Slayer": 83,
+            "Smithing": 90,
+            "Strength": 60,
+            "Thieving": 84,
+            "Woodcutting": 75,
+            "Quests": [
+                "Desert Treasure"
+            ]
+        }
     }
 }
