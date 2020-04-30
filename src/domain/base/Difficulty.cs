@@ -1,3 +1,4 @@
+using System;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
@@ -57,10 +58,21 @@ namespace Domain
         public string[] Boostable { get; private set; }
         [JsonProperty]
         public short QuestPoints { get; private set; }
+        [JsonProperty]
+        public Difficulty Ironmen { get; private set; }
+
+        public short this[string skillName]
+        {
+            get 
+            {
+                return (byte)(GetType()
+                .GetProperty(skillName)
+                .GetValue(this, null));
+            }
+        }
 
         public IEnumerable<(string Name, short Level)> GetSkills()
         {
-            yield return (nameof(Overall), Overall);
             yield return (nameof(Attack), Attack);
             yield return (nameof(Defence), Defence);
             yield return (nameof(Hitpoints), Hitpoints);

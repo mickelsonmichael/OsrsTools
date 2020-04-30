@@ -8,7 +8,9 @@
 }
 
 <div class="alert alert-info">
-    Any skills marked with an asterisk (*) are boostable.
+    Any skills marked with an asterisk (*) are boostable. A skill with a slash indicates the level for normal accounts
+    and ironman/ironwoman accounts respectively (e.g. normal/iron). The row will be marked as yellow if the account
+    does not meet the ironman/ironwoman requirement.
 </div>
 
 <br />
@@ -33,11 +35,25 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach (var skill in @diffi.Difficulty.GetSkills().Where(x => x.Level > 0))
+                                    @foreach (var skill in @diffi.Difficulty.GetSkills())
                                     {
                                         var currentLevel = Model.Levels.Skills.Single(x => x.Name == skill.Name).Level;
+                                        var iron = @diffi.Difficulty?.Ironmen?[@skill.Name];
+                                        
 
-                                        <tr class="@(currentLevel >= skill.Level ? "" : "table-danger")">
+                                        if (skill.Level == 0 && !(iron > 0))
+                                        {
+                                            continue;
+                                        }
+
+                                        var rowContext = currentLevel < skill.Level ? "table-danger" : string.Empty;
+
+                                        if (currentLevel >= skill.Level && currentLevel < iron)
+                                        {
+                                            rowContext = "table-warning";
+                                        }
+
+                                        <tr class="@rowContext">
                                             <td>
                                                 @skill.Name
                                                 @if (@diffi.Difficulty.Boostable?.Contains(@skill.Name)??false)
@@ -45,7 +61,17 @@
                                                     <span>*</span>
                                                 }
                                             </td>
-                                            <td>@skill.Level (@currentLevel)</td>
+                                            <td>
+                                                @if (iron > 0)
+                                                {
+                                                    <span>@skill.Level/@iron</span>
+                                                }
+                                                else
+                                                {
+                                                    <span>@skill.Level</span>
+                                                }
+                                                (@currentLevel)
+                                            </td>
                                         </tr>
                                     }
                                 </tbody>
