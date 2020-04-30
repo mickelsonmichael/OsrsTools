@@ -7,6 +7,10 @@
     ViewData["PlayerName"] = @Model.Levels.PlayerName;
 }
 
+<div class="alert alert-info">
+    Any skills marked with an asterisk (*) are boostable.
+</div>
+
 <br />
 
 @foreach (var diary in Model.Diaries.GetDiaries())
@@ -34,7 +38,13 @@
                                         var currentLevel = Model.Levels.Skills.Single(x => x.Name == skill.Name).Level;
 
                                         <tr class="@(currentLevel >= skill.Level ? "" : "table-danger")">
-                                            <td>@skill.Name</td>
+                                            <td>
+                                                @skill.Name
+                                                @if (@diffi.Difficulty.Boostable?.Contains(@skill.Name)??false)
+                                                {
+                                                    <span>*</span>
+                                                }
+                                            </td>
                                             <td>@skill.Level (@currentLevel)</td>
                                         </tr>
                                     }
