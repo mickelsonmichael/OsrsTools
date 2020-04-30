@@ -688,5 +688,88 @@
                 "Dream Mentor"
             ]
         }
+    },
+    "Western": {
+        "Easy": {
+            "Combat": 40,
+            "Fletching": 20,
+            "Hunter": 9,
+            "Mining": 15,
+            "Ranged": 30,
+            "Quests": [
+                "Big Chompy Bird Hunting",
+                "Rune Mysteries"
+            ]
+        },
+        "Medium": {
+            "Agility": 37,
+            "Combat": 70,
+            "Cooking": 42,
+            "Firemaking": 35,
+            "Fishing": 46,
+            "Fletching": 5,
+            "Hunter": 31,
+            "Mining": 40,
+            "Ranged": 30,
+            "Woodcutting": 35,
+            "Quests": [
+                "Big Chompy Bird Hunting",
+                "Eagles' Peak",
+                "Monkey Madness I",
+                "The Eye of Glouphrie",
+                "Rune Mysteries",
+                "Shilo Village"
+            ]
+        },
+        "Hard": {
+            "Agility": 56,
+            "Combat": 100,
+            "Construction": 65,
+            "Cooking": 62,
+            "Farming": 68,
+            "Firemaking": 50,
+            "Fishing": 62,
+            "Fletching": 5,
+            "Hunter": 69,
+            "Ranged": 70,
+            "Magic": 64,
+            "Mining": 70,
+            "Thieving": 75,
+            "Woodcutting": 50,
+            "Boostable": [
+                "Farming",
+                "Fishing",
+                "Hunter",
+                "Mining",
+                "Thieving"
+            ],
+            "Quests": [
+                "Big Chompy Bird Hunting",
+                "Sheep Herder",
+                "Roving Elves",
+                "Swan Song",
+                "Cook's Assistant",
+                "Monkey Madness I",
+                "Freeing King Wowogei subquest (Recipe for Disaster)"
+            ]
+        },
+        "Elite": {
+            "Agility": 85,
+            "Attack": 42,
+            "Combat": 40,
+            "Defence": 42,
+            "Farming": 75,
+            "Fletching": 85,
+            "Hitpoints": 42,
+            "Magic": 42,
+            "Prayer": 22,
+            "Ranged": 42,
+            "Slayer": 93,
+            "Strength": 42,
+            "Thieving": 85,
+            "Quests": [
+                "Mourning's End Part I"
+            ]
+        }
     }
 }
