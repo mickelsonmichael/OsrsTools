@@ -24,10 +24,10 @@
             "Thieving": 38,
             "Woodcutting": 36,
             "QuestPoints": 20,
-            "Ironmen": [
-                { "Flecthing": 59 },
-                { "Smithing": 59 }
-            ],
+            "Ironmen": {
+                "Flecthing": 59,
+                "Smithing": 59
+            },
             "Quests": [
                 "Fairytale I - Growing Pains",
                 "Enlightened Journey",
@@ -551,9 +551,9 @@
             "Combat": 20,
             "Farming": 23,
             "Slayer": 15,
-            "Ironman": [
-                { "Farming": 47 }
-            ],
+            "Ironmen": {
+                "Farming": 47
+            },
             "Quests": [
                 "The Restless Ghost",
                 "Priest in Peril",
@@ -648,9 +648,9 @@
             "Herblore": 10,
             "Magic": 25,
             "Thieving": 25,
-            "Ironmen": [
-                { "Magic": 49 }
-            ],
+            "Ironmen": {
+                "Magic": 49
+            },
             "QuestPoints": 32,
             "Quests": [
                 "Enlightened Journey",

@@ -1,5 +1,104 @@
+@model Domain.DiaryRequirements
+@using System.Linq;
+@using System.Collections.Generic;
 
-<form asp-action="GetDiaryRequirements" class="form-inline">
-    <input type="text" class="form-control mr-1" name="playerName" />
-    <button type="submit">Check Requirements</button>
-</form>
+@{
+    ViewData["Title"] = "Requirements";
+    ViewData["PlayerName"] = @Model.Levels.PlayerName;
+}
+
+<div class="alert alert-info">
+    Any skills marked with an asterisk (*) are boostable. A skill with a slash indicates the level for normal accounts
+    and ironman/ironwoman accounts respectively (e.g. normal/iron). The row will be marked as yellow if the account
+    does not meet the ironman/ironwoman requirement.
+</div>
+
+<br />
+
+@foreach (var diary in Model.Diaries.GetDiaries())
+{
+    <h3>@diary.Name</h3>
+    <div class="row">
+
+        @foreach (var diffi in @diary.Diary.GetDifficulties())
+        {
+            <div class="col-12 col-sm-6 col-lg-3 px-1 mb-1">
+                <div class="card">
+                    <div class="card-body">
+                        <h4>@diffi.Name</h4>
+
+                            <table class="table table-striped table-hover table-sm mb-1">
+                                <thead>
+                                    <tr>
+                                        <th>Skill</th>
+                                        <th>Needed (Have)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var skill in @diffi.Difficulty.GetSkills())
+                                    {
+                                        var currentLevel = Model.Levels.Skills.Single(x => x.Name == skill.Name).Level;
+                                        var iron = @diffi.Difficulty?.Ironmen?[@skill.Name];
+                                        
+
+                                        if (skill.Level == 0 && !(iron > 0))
+                                        {
+                                            continue;
+                                        }
+
+                                        var rowContext = currentLevel < skill.Level ? "table-danger" : string.Empty;
+
+                                        if (currentLevel >= skill.Level && currentLevel < iron)
+                                        {
+                                            rowContext = "table-warning";
+                                        }
+
+                                        <tr class="@rowContext">
+                                            <td>
+                                                @skill.Name
+                                                @if (@diffi.Difficulty.Boostable?.Contains(@skill.Name)??false)
+                                                {
+                                                    <span>*</span>
+                                                }
+                                            </td>
+                                            <td>
+                                                @if (iron > 0)
+                                                {
+                                                    <span>@skill.Level/@iron</span>
+                                                }
+                                                else
+                                                {
+                                                    <span>@skill.Level</span>
+                                                }
+                                                (@currentLevel)
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+
+                            <hr />
+
+                            <h5>Quests</h5>
+                            @if (diffi.Difficulty.Quests?.Count() > 0)
+                            {
+                                <ul>
+                                    @foreach (var quest in @diffi.Difficulty.Quests)
+                                    {
+                                        <li>@quest</li>
+                                    }
+                                </ul>
+                            }
+                            else 
+                            {
+                                <em>No quest requirements</em>
+                            }
+                            
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <hr />
+}

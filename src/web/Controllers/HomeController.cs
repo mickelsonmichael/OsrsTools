@@ -1,28 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using web.Models;
 using Services.Interfaces;
+using System.Diagnostics;
 
 namespace web.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
-
-        public IActionResult Index()
-        {
-            return View();
-        }
+        public IActionResult Index() => View();
 
         [HttpPost]
         public IActionResult GetHiScores(string playerName,
@@ -30,12 +16,12 @@ namespace web.Controllers
         {
             if (string.IsNullOrWhiteSpace(playerName))
             {
-                return View("Index");
+                return View(nameof(Index));
             }
 
-            var hiScore = hiScoreService.GetHiScore(playerName);
-
-            return View(hiScore);
+            return View(
+                hiScoreService.GetHiScore(playerName)
+            );
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
