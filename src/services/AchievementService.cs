@@ -28,15 +28,11 @@ namespace Services
         private Diaries GetDiaries()
         {
             var assembly = typeof(AchievementService).Assembly;
-            var names = assembly.GetManifestResourceNames();
             using Stream resource = assembly.GetManifestResourceStream("Services.diaries.json");
             using var reader = new StreamReader(resource);
-
             var json = reader.ReadToEnd();
-            System.Console.WriteLine(json);
+
             return JsonConvert.DeserializeObject<Diaries>(json);
         }
-
-        
     }
 }

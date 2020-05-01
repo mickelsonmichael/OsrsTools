@@ -1,4 +1,3 @@
-using System;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
@@ -6,6 +5,8 @@ namespace Domain
 {
     public class Difficulty
     {
+#pragma warning disable RCS1170 // Use read-only auto-implemented property.
+
         [JsonProperty]
         public short Overall { get; private set; }
         [JsonProperty]
@@ -60,10 +61,11 @@ namespace Domain
         public short QuestPoints { get; private set; }
         [JsonProperty]
         public Difficulty Ironmen { get; private set; }
+#pragma warning restore RCS1170 // Use read-only auto-implemented property. Properties need to be private set fro Json.NET
 
         public short this[string skillName]
         {
-            get 
+            get
             {
                 return (byte)(GetType()
                 .GetProperty(skillName)

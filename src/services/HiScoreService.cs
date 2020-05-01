@@ -1,22 +1,20 @@
+using Domain;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
+using Services.Interfaces;
+using Services.Utilities;
 using System;
-using System.Net;
 using System.Collections.Generic;
 using System.Linq;
-using Services.Interfaces;
-using Domain;
-using Domain.Enums;
-using static Domain.Enums.SkillIndex;
-using static Domain.Enums.SkillDetail;
+using System.Net;
 
 namespace Services
 {
     public class HiScoreService : IHiScoreService
     {
-        const string _apiUrl = "https://secure.runescape.com/m=hiscore_oldschool/index_lite.ws?player=";
-        private WebClient _client = new WebClient();
-        private IMemoryCache _cache;
+        private const string _apiUrl = "https://secure.runescape.com/m=hiscore_oldschool/index_lite.ws?player=";
+        private readonly WebClient _client = new WebClient();
+        private readonly IMemoryCache _cache;
         private readonly ILogger<HiScoreService> _logger;
         private const byte _retryAttempts = 3;
 
@@ -32,7 +30,7 @@ namespace Services
 
             return _cache.GetOrCreate(
                 playerName,
-                entry => 
+                entry =>
                 {
                     entry.SetAbsoluteExpiration(TimeSpan.FromMinutes(60));
                     entry.SetSlidingExpiration(TimeSpan.FromMinutes(15));
@@ -47,11 +45,11 @@ namespace Services
             _logger.LogInformation($"Retrieving updated information for {playerName}");
 
             var dataString = GetDataString(playerName);
-            
+
             _logger.LogDebug(dataString);
 
             return new HiScore(
-                playerName, 
+                playerName,
                 ParseHighScore(dataString)
             );
         }
@@ -61,7 +59,7 @@ namespace Services
             string dataString = string.Empty;
             byte attemptCount = 1;
 
-            try 
+            try
             {
                 while(true)
                 {
@@ -69,7 +67,7 @@ namespace Services
 
                     if (string.IsNullOrEmpty(dataString))
                     {
-                        throw new Exception("Empty string retrieved from database");
+                        throw new HiScoreRetrievalException("Empty string retrieved from API.");
                     }
 
                     return dataString;
@@ -86,7 +84,7 @@ namespace Services
                 throw; // retries failed, just throw
             }
 
-            return string.Empty;
+            return dataString;
         }
 
         private IEnumerable<Skill> ParseHighScore(string data)
