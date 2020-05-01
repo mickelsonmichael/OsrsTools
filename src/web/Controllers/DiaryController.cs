@@ -1,6 +1,4 @@
-using System;
 using Microsoft.AspNetCore.Mvc;
-using web.Models;
 using Services.Interfaces;
 
 namespace web.Controllers

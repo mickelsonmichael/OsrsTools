@@ -1,6 +1,6 @@
 using Domain.Enums;
 
-namespace Domain
+namespace Domain.Base
 {
     public class Skill
     {

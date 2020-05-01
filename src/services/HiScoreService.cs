@@ -1,38 +1,40 @@
+using Domain;
+using Domain.Base;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
+using Services.Interfaces;
+using Services.Utilities;
 using System;
-using System.Net;
 using System.Collections.Generic;
 using System.Linq;
-using Services.Interfaces;
-using Domain;
-using Domain.Enums;
-using static Domain.Enums.SkillIndex;
-using static Domain.Enums.SkillDetail;
+using System.Net;
 
 namespace Services
 {
     public class HiScoreService : IHiScoreService
     {
-        const string _apiUrl = "https://secure.runescape.com/m=hiscore_oldschool/index_lite.ws?player=";
-        private WebClient _client = new WebClient();
-        private IMemoryCache _cache;
+        private readonly string _apiUrl;
+        private readonly WebClient _client = new WebClient();
+        private readonly IMemoryCache _cache;
         private readonly ILogger<HiScoreService> _logger;
-        private const byte _retryAttempts = 3;
+        private readonly byte _retryAttempts;
 
-        public HiScoreService(IMemoryCache cache, ILogger<HiScoreService> logger)
+        public HiScoreService(IMemoryCache cache, ILogger<HiScoreService> logger, IOptions<ServiceOptions> config)
         {
+            _apiUrl = config.Value.ApiUrl;
+            _retryAttempts = config.Value.RetryAttempts;
             _cache = cache;
             _logger = logger;
         }
 
         public HiScore GetHiScore(string playerName)
         {
-            _logger.LogInformation($"Getting HiScores for {playerName}");
+            _logger.LogInformation("Getting HiScores for {PlayerName}", playerName);
 
             return _cache.GetOrCreate(
                 playerName,
-                entry => 
+                entry =>
                 {
                     entry.SetAbsoluteExpiration(TimeSpan.FromMinutes(60));
                     entry.SetSlidingExpiration(TimeSpan.FromMinutes(15));
@@ -44,14 +46,14 @@ namespace Services
 
         private HiScore RetrieveFromApi(string playerName)
         {
-            _logger.LogInformation($"Retrieving updated information for {playerName}");
+            _logger.LogInformation("Retrieving updated information for {PlayerName}", playerName);
 
             var dataString = GetDataString(playerName);
-            
+
             _logger.LogDebug(dataString);
 
             return new HiScore(
-                playerName, 
+                playerName,
                 ParseHighScore(dataString)
             );
         }
@@ -61,7 +63,9 @@ namespace Services
             string dataString = string.Empty;
             byte attemptCount = 1;
 
-            try 
+            _logger.LogDebug("Getting information from {ApiUrl}", _apiUrl);
+
+            try
             {
                 while(true)
                 {
@@ -69,7 +73,7 @@ namespace Services
 
                     if (string.IsNullOrEmpty(dataString))
                     {
-                        throw new Exception("Empty string retrieved from database");
+                        throw new HiScoreRetrievalException("Empty string retrieved from API.");
                     }
 
                     return dataString;
@@ -78,15 +82,17 @@ namespace Services
             catch (Exception ex)
                 when (attemptCount < _retryAttempts)
             {
-                _logger.LogError($"Failed attempt to gather data from HiScores. Attempt {attemptCount}/{_retryAttempts}", ex);
+                _logger.LogError("Failed attempt to gather data from HiScores. Attempt {AttemptCount}/{RetryAttempts}", ex, attemptCount, _retryAttempts);
                 attemptCount++;
             }
             catch
             {
+                _logger.LogCritical("Retries failed for {PlayerName}. {RetryAttempts} retry attempts.", playerName, _retryAttempts);
+
                 throw; // retries failed, just throw
             }
 
-            return string.Empty;
+            return dataString;
         }
 
         private IEnumerable<Skill> ParseHighScore(string data)

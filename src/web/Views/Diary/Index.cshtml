@@ -1,6 +1,4 @@
-@model Domain.DiaryRequirements
-@using System.Linq;
-@using System.Collections.Generic;
+@model DiaryRequirements
 
 @{
     ViewData["Title"] = "Requirements";
@@ -17,21 +15,24 @@
     does not meet the ironman/ironwoman requirement.
 </div>
 
-@foreach (var diary in diaries)
+@foreach (var diaryData in diaries)
 {
+    var (diaryName, diary) = diaryData;
     var diaryId = "diary" + id++;
     <h3>
         <a data-toggle="collapse" href="#@diaryId" role="button" aria-expanded="false" aria-controls="@diaryId">
-            @diary.Name
+            @diaryName
         </a>
     </h3>
     <div class="row collapse" id="@diaryId">
-        @foreach (var diffi in @diary.Diary.GetDifficulties())
+        @foreach (var difficultyData in @diary.GetDifficulties())
         {
+            var (name, difficulty) = difficultyData;
+
             <div class="col-12 col-sm-6 col-lg-3 px-1 mb-1">
                 <div class="card">
                     <div class="card-body">
-                        <h4>@diffi.Name</h4>
+                        <h4>@name</h4>
 
                             <table class="table table-striped table-hover table-sm mb-1">
                                 <thead>
@@ -41,19 +42,22 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach (var skill in @diffi.Difficulty.GetSkills())
+                                    @foreach (var skill in difficulty.GetSkills())
                                     {
+                                        // get the player's current level
                                         var currentLevel = Model.Levels.Skills.Single(x => x.Name == skill.Name).Level;
-                                        var iron = @diffi.Difficulty?.Ironmen?[@skill.Name];
+                                        var iron = difficulty?.Ironmen?[@skill.Name];
                                         
-
+                                        // Only display the skill if there are level requirements
                                         if (skill.Level == 0 && !(iron > 0))
                                         {
                                             continue;
                                         }
 
+                                        // paint the row red if they don't have the level required
                                         var rowContext = currentLevel < skill.Level ? "table-danger" : string.Empty;
 
+                                        // paint the row orange if they don't have the ironman level required
                                         if (currentLevel >= skill.Level && currentLevel < iron)
                                         {
                                             rowContext = "table-warning";
@@ -62,7 +66,7 @@
                                         <tr class="@rowContext">
                                             <td>
                                                 @skill.Name
-                                                @if (@diffi.Difficulty.Boostable?.Contains(@skill.Name)??false)
+                                                @if (@difficulty.Boostable?.Contains(@skill.Name)??false)
                                                 {
                                                     <span>*</span>
                                                 }
@@ -86,10 +90,10 @@
                             <hr />
 
                             <h5>Quests</h5>
-                            @if (diffi.Difficulty.Quests?.Count() > 0)
+                            @if (difficulty.Quests?.Count() > 0)
                             {
                                 <ul>
-                                    @foreach (var quest in @diffi.Difficulty.Quests)
+                                    @foreach (var quest in @difficulty.Quests)
                                     {
                                         <li>@quest</li>
                                     }
