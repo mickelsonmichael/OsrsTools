@@ -1,5 +1,6 @@
 using Domain;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using Services.Interfaces;
 using System.IO;
@@ -11,12 +12,13 @@ namespace Services
         private readonly IHiScoreService _hiScoreService;
         private readonly Diaries _diaries;
         private readonly ILogger<AchievementService> _logger;
-        private const string _fileName = "Services.diaries.json";
+        private readonly string _fileName;
 
-        public AchievementService(IHiScoreService hiScoreService, ILogger<AchievementService> logger)
+        public AchievementService(IHiScoreService hiScoreService, ILogger<AchievementService> logger, IOptions<ServiceOptions> config)
         {
             _hiScoreService = hiScoreService;
             _logger = logger;
+            _fileName = config.Value.DiaryFileName;
 
             _diaries = GetDiaries();
         }

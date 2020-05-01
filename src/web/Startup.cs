@@ -1,3 +1,4 @@
+using Domain;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Caching.Memory;
@@ -23,6 +24,7 @@ namespace web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddLogging(config => config.AddConsole());
+            services.Configure<ServiceOptions>(Configuration.GetSection("Services"));
 
             services.AddControllersWithViews();
             services.AddSingleton<IMemoryCache, MemoryCache>();

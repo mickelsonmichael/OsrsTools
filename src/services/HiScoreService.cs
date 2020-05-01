@@ -2,6 +2,7 @@ using Domain;
 using Domain.Base;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using Services.Interfaces;
 using Services.Utilities;
 using System;
@@ -13,14 +14,16 @@ namespace Services
 {
     public class HiScoreService : IHiScoreService
     {
-        private const string _apiUrl = "https://secure.runescape.com/m=hiscore_oldschool/index_lite.ws?player=";
+        private readonly string _apiUrl;
         private readonly WebClient _client = new WebClient();
         private readonly IMemoryCache _cache;
         private readonly ILogger<HiScoreService> _logger;
-        private const byte _retryAttempts = 3;
+        private readonly byte _retryAttempts;
 
-        public HiScoreService(IMemoryCache cache, ILogger<HiScoreService> logger)
+        public HiScoreService(IMemoryCache cache, ILogger<HiScoreService> logger, IOptions<ServiceOptions> config)
         {
+            _apiUrl = config.Value.ApiUrl;
+            _retryAttempts = config.Value.RetryAttempts;
             _cache = cache;
             _logger = logger;
         }
