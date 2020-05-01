@@ -1,8 +1,7 @@
-﻿using System;
-using Microsoft.AspNetCore.Mvc;
-using web.Models;
+﻿using Microsoft.AspNetCore.Mvc;
 using Services.Interfaces;
 using System.Diagnostics;
+using web.Models;
 
 namespace web.Controllers
 {

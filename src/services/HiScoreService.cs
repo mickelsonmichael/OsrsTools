@@ -1,4 +1,5 @@
 using Domain;
+using Domain.Base;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
 using Services.Interfaces;
@@ -26,7 +27,7 @@ namespace Services
 
         public HiScore GetHiScore(string playerName)
         {
-            _logger.LogInformation($"Getting HiScores for {playerName}");
+            _logger.LogInformation("Getting HiScores for {PlayerName}", playerName);
 
             return _cache.GetOrCreate(
                 playerName,
@@ -42,7 +43,7 @@ namespace Services
 
         private HiScore RetrieveFromApi(string playerName)
         {
-            _logger.LogInformation($"Retrieving updated information for {playerName}");
+            _logger.LogInformation("Retrieving updated information for {PlayerName}", playerName);
 
             var dataString = GetDataString(playerName);
 
@@ -58,6 +59,8 @@ namespace Services
         {
             string dataString = string.Empty;
             byte attemptCount = 1;
+
+            _logger.LogDebug("Getting information from {ApiUrl}", _apiUrl);
 
             try
             {
@@ -76,11 +79,13 @@ namespace Services
             catch (Exception ex)
                 when (attemptCount < _retryAttempts)
             {
-                _logger.LogError($"Failed attempt to gather data from HiScores. Attempt {attemptCount}/{_retryAttempts}", ex);
+                _logger.LogError("Failed attempt to gather data from HiScores. Attempt {AttemptCount}/{RetryAttempts}", ex, attemptCount, _retryAttempts);
                 attemptCount++;
             }
             catch
             {
+                _logger.LogCritical("Retries failed for {PlayerName}. {RetryAttempts} retry attempts.", playerName, _retryAttempts);
+
                 throw; // retries failed, just throw
             }
 
