@@ -1,0 +1,300 @@
+{
+    "Herbs": [
+        "Guam leaf",
+        "Marrentil",
+        "Rogue's purse",
+        "Tarromin",
+        "Harralander",
+        "Ranarr weed",
+        "Toadflax",
+        "Irit leaf",
+        "Avantoe",
+        "Kwuarm",
+        "Snapdragon",
+        "Cadantine",
+        "Lantadyme",
+        "Dwarf weed",
+        "Torstol"
+    ],
+    "Potions": [
+        {
+            "Name": "Attack potion",
+            "XP": 25,
+            "Herb": "Guam leaf",
+            "Level": 3,
+            "Ingredients": [
+                "Eye of newt"
+            ]
+        },
+        {
+            "Name": "Antipoison",
+            "XP": 37.5,
+            "Herb": "Marrentil",
+            "Level": 5,
+            "Ingredients": [
+                "Unicorn horn dust"
+            ]
+        },
+        {
+            "Name": "Relicym's balm",
+            "XP": 40,
+            "Herb": "Rogue's purse",
+            "Level": 8,
+            "Ingredients": [
+                "Snake weed"
+            ]
+        },
+        {
+            "Name": "Strength potion",
+            "XP": 50,
+            "Herb": "Tarromin",
+            "Level": 12,
+            "Ingredients": [
+                "Limpwurt root"
+            ]
+        },
+        {
+            "Name": "Serum 207",
+            "XP": 50,
+            "Herb": "Tarromin",
+            "Level": 15,
+            "Ingredients": [
+                "Ashes"
+            ]
+        },
+        {
+            "Name": "Compost potion",
+            "XP": 60,
+            "Herb": "Harralander",
+            "Level": 22,
+            "Ingredients": [
+                "Volcanic ash"
+            ]
+        },
+        {
+            "Name": "Restore potion",
+            "XP": 62.5,
+            "Herb": "Harralander",
+            "Level": 22,
+            "Ingredients": [
+                "Red spiders' eggs"
+            ]
+        },
+        {
+            "Name": "Blamish oil",
+            "XP": 80,
+            "Herb": "Harralander",
+            "Level": 25,
+            "Ingredients": [
+                "Blamish snail slime"
+            ]
+        },
+        {
+            "Name": "Energy potion",
+            "XP": 67.5,
+            "Herb": "Harralander",
+            "Level": 26,
+            "Ingredients": [
+                "Chocolate dust"
+            ]
+        },
+        {
+            "Name": "Defence potion",
+            "XP": 75,
+            "Herb": "Ranarr weed",
+            "Level": 30,
+            "Ingredients": [
+                "White berries"
+            ]
+        },
+        {
+            "Name": "Agility potion",
+            "XP": 80,
+            "Herb": "Toadflax",
+            "Level": 34,
+            "Ingredients": [
+                "Toad's legs"
+            ]
+        },
+        {
+            "Name": "Combat potion",
+            "XP": 84,
+            "Herb": "Harralander",
+            "Level": 36,
+            "Ingredients": [
+                "Goat horn dust"
+            ]
+        },
+        {
+            "Name": "Prayer potion",
+            "XP": 87.5,
+            "Herb": "Ranarr weed",
+            "Level": 38,
+            "Ingredients": [
+                "Snape grass"
+            ]
+        },
+        {
+            "Name": "Super attack",
+            "XP": 100,
+            "Herb": "Irit leaf",
+            "Level": 45,
+            "Ingredients": [
+                "Eye of newt"
+            ]
+        },
+        {
+            "Name": "Superantipoison",
+            "XP": 106.3,
+            "Herb": "Irit leaf",
+            "Level": 48,
+            "Ingredients": [
+                "Unicorn horn dust"
+            ]
+        },
+        {
+            "Name": "Fishing potion",
+            "XP": 112.5,
+            "Herb": "Avantoe",
+            "Level": 50,
+            "Ingredients": [
+                "Snape grass"
+            ]
+        },
+        {
+            "Name": "Super energy",
+            "XP": 117.5,
+            "Herb": "Avantoe",
+            "Level": 52,
+            "Ingredients": [
+                "Mort myre fungus"
+            ]
+        },
+        {
+            "Name": "Hunter potion",
+            "XP": 120,
+            "Herb": "Avantoe",
+            "Level": 53,
+            "Ingredients": [
+                "Kebbit teeth dust"
+            ]
+        },
+        {
+            "Name": "Super strength",
+            "XP": 125,
+            "Herb": "Kwuarm",
+            "Level": 3,
+            "Ingredients": [
+                "Limpwurt rot"
+            ]
+        },
+        {
+            "Name": "Weapon poison",
+            "XP": 137.5,
+            "Herb": "Kwuarm",
+            "Level": 60,
+            "Ingredients": [
+                "Dragon scale dust"
+            ]
+        },
+        {
+            "Name": "Super restore",
+            "XP": 142.5,
+            "Herb": "Snapdragon",
+            "Level": 63,
+            "Ingredients": [
+                "Red spiders' eggs"
+            ]
+        },
+        {
+            "Name": "Super defence",
+            "XP": 150,
+            "Herb": "Cadantine",
+            "Level": 66,
+            "Ingredients": [
+                "White berries"
+            ]
+        },
+        {
+            "Name": "Antidote+",
+            "XP": 155,
+            "Herb": "Toadflax",
+            "Level": 68,
+            "Ingredients": [
+                "Yew roots"
+            ]
+        },
+        {
+            "Name": "Antifire potion",
+            "XP": 157.5,
+            "Herb": "Lantadyme",
+            "Level": 69,
+            "Ingredients": [
+                "Dragon scale dust"
+            ]
+        },
+        {
+            "Name": "Ranging potion",
+            "XP": 162.5,
+            "Herb": "Dwarf weed",
+            "Level": 72,
+            "Ingredients": [
+                "Wine of zamorak"
+            ]
+        },
+        {
+            "Name": "Magic potion",
+            "XP": 172.5,
+            "Herb": "Lantadyme",
+            "Level": 3,
+            "Ingredients": [
+                "Potato cactus"
+            ]
+        },
+        {
+            "Name": "Zamorak brew",
+            "XP": 175,
+            "Herb": "Torstol",
+            "Level": 76,
+            "Ingredients": [
+                "Jangerberries"
+            ]
+        },
+        {
+            "Name": "Antidote++",
+            "XP": 177.5,
+            "Herb": "Irit leaf",
+            "Level": 79,
+            "Ingredients": [
+                "Magic roots"
+            ]
+        },
+        {
+            "Name": "Bastion potion",
+            "XP": 155,
+            "Herb": "Cadantine",
+            "Level": 80,
+            "Ingredients": [
+                "Wins of zamorak"
+            ]
+        },
+        {
+            "Name": "Battlemage potion",
+            "XP": 155,
+            "Herb": "Cadantine",
+            "Level": 80,
+            "Ingredients": [
+                "Potato cactus"
+            ]
+        },
+        {
+            "Name": "Saradomin brew",
+            "XP": 180,
+            "Herb": "Toadflax",
+            "Level": 81,
+            "Ingredients": [
+                "Crushed bird's nest"
+            ]
+        }
+    ]
+}
