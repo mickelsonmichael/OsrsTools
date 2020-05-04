@@ -1,17 +1,20 @@
 using Microsoft.AspNetCore.Mvc;
 using Services.Interfaces;
+using Services.Utilities;
 
 namespace web.Controllers
 {
     public class DiaryController : Controller
     {
-        [HttpPost]
-        public IActionResult Index(string playerName,
-            [FromServices] IAchievementService achievementService)
+        public IActionResult Index(
+            [FromServices] IAchievementService achievementService
+        )
         {
+            string playerName = HttpContext.Session.GetPlayerName();
+
             if (string.IsNullOrWhiteSpace(playerName))
             {
-                return View("Index", "Home");
+                return View("SetPlayerName");
             }
 
             return View(

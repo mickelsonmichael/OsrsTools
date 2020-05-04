@@ -16,7 +16,24 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <a class="navbar-brand" asp-action="Index" asp-controller="Home">OSRS Tools</a>
 
-            <partial name="_RequirementsForm" />
+            <button class="navbar-toggler" type="button" data-toggle="collapse" 
+                    data-target="#navbarSupportedContent" 
+                    aria-controls="navbarSupportedContent" 
+                    aria-expanded="false" 
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="Index" asp-controller="Diary" asp-area="">Diary</a>
+                    </li>
+                </ul>
+                <partial name="_PlayerName" />
+            </div>
+
+            
         </nav>
     </header>
     <div class="container pt-3">

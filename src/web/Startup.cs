@@ -24,6 +24,7 @@ namespace web
             services.AddControllersWithViews();
 
             services.AddLogging(config => config.AddConsole())
+                .AddSession()
                 .Configure<ServiceOptions>(Configuration.GetSection("Services"))
                 .AddAppServices();
         }
@@ -41,12 +42,11 @@ namespace web
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-            app.UseHttpsRedirection();
-            app.UseStaticFiles();
-
-            app.UseRouting();
-
-            app.UseAuthorization();
+            app.UseHttpsRedirection()
+                .UseStaticFiles()
+                .UseRouting()
+                .UseSession()
+                .UseAuthentication();
 
             app.UseEndpoints(endpoints =>
             {
