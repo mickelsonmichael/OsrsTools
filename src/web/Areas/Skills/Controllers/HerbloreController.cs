@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Domain.Skills;
+using Microsoft.AspNetCore.Mvc;
 using Services.Interfaces.Skills;
+using System.Collections.Generic;
 using Web.Utilities;
 
 namespace Web.Areas.Skills.Controllers
@@ -15,6 +17,9 @@ namespace Web.Areas.Skills.Controllers
         }
 
         public IActionResult Index()
-            => View(_herbloreService.GetPotions());
+            => View();
+
+        public IList<Potion> Potions()
+            => _herbloreService.GetPotions();
     }
 }

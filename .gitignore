@@ -92,3 +92,7 @@ PublishScripts/
 # Microsoft Azure Build Output
 csx/
 *.build.csdef
+
+# React
+web/WebApp/*
+node_modules/
