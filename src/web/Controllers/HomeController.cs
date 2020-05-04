@@ -2,12 +2,28 @@
 using Services.Interfaces;
 using System.Diagnostics;
 using web.Models;
+using Web.Utilities;
 
 namespace web.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : PlayerInfoController
     {
         public IActionResult Index() => View();
+
+        [HttpPost]
+        public IActionResult SetPlayerName(string playerName)
+        {
+            SetOrClearPlayer(playerName);
+
+            var returnUrl = GetUrlReferrer();
+
+            if (!string.Equals(returnUrl.Host, HttpContext.Request.Host.Host, System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                return RedirectToAction(nameof(Index));
+            }
+
+            return Redirect(returnUrl.ToString());
+        }
 
         [HttpPost]
         public IActionResult GetHiScores(string playerName,

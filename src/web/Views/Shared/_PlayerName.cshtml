@@ -1,0 +1,9 @@
+﻿<form asp-action="SetPlayerName" asp-controller="Home" asp-area="" class="form-inline ml-md-auto ml-0">
+    <input type="text"
+           class="form-control mr-1"
+           name="playerName"
+           placeholder="Enter player name"
+           required
+           value="@Context.Session.GetPlayerName()" />
+    <button type="submit" class="btn btn-primary">Set Name</button>
+</form>

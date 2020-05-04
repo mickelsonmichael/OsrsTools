@@ -1,13 +1,11 @@
 using Domain;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Services;
-using Services.Interfaces;
 
 namespace web
 {
@@ -23,13 +21,12 @@ namespace web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddLogging(config => config.AddConsole());
-            services.Configure<ServiceOptions>(Configuration.GetSection("Services"));
-
             services.AddControllersWithViews();
-            services.AddSingleton<IMemoryCache, MemoryCache>();
-            services.AddSingleton<IHiScoreService, HiScoreService>();
-            services.AddSingleton<IAchievementService, AchievementService>();
+
+            services.AddLogging(config => config.AddConsole())
+                .AddSession()
+                .Configure<ServiceOptions>(Configuration.GetSection("Services"))
+                .AddAppServices();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,18 +42,21 @@ namespace web
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-            app.UseHttpsRedirection();
-            app.UseStaticFiles();
-
-            app.UseRouting();
-
-            app.UseAuthorization();
+            app.UseHttpsRedirection()
+                .UseStaticFiles()
+                .UseRouting()
+                .UseSession()
+                .UseAuthentication();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
+                    name: "Skills",
+                  pattern: "{area:exists}/{controller=Herblore}/{action=Index}");
+
+                endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}");
             });
         }
     }
