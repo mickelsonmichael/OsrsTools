@@ -7,8 +7,7 @@ module.exports = {
         path: path.resolve(__dirname, '../wwwroot/js'),
         filename: 'bundle.js'
     },
-    mode: "development",
-    watch: true,
+    mode: "production",
     module: {
         rules: [
             {
