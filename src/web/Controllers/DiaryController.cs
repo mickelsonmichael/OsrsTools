@@ -6,19 +6,13 @@ namespace web.Controllers
 {
     public class DiaryController : Controller
     {
-        public IActionResult Index(
-            [FromServices] IAchievementService achievementService
-        )
+        [RequirePlayer]
+        public IActionResult Index([FromServices] IAchievementService achievementService)
         {
-            string playerName = HttpContext.Session.GetPlayerName();
-
-            if (string.IsNullOrWhiteSpace(playerName))
-            {
-                return View("SetPlayerName");
-            }
-
             return View(
-                achievementService.GetDiaryProgress(playerName)
+                achievementService.GetDiaryProgress(
+                    HttpContext.Session.GetPlayerName()
+                )
             );
         }
     }
