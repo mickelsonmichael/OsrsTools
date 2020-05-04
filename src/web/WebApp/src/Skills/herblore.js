@@ -17,15 +17,6 @@ class Herblore extends React.Component {
         this.getPotions();
     }
 
-    getDarkTheme() {
-        return createMuiTheme({
-            palette: {
-                type: 'dark'
-            }
-        });
-    }
-
-
     getPotions() {
         fetch(this.props.url)
             .then(response => response.json())
@@ -54,6 +45,7 @@ class Herblore extends React.Component {
                         ingredients={pot.ingredients}
                         xp={pot.xp}
                         herb={pot.herb}
+                        clean={pot.cleanXP}
                         key={i} />
                 );
             });
@@ -65,7 +57,6 @@ class Herblore extends React.Component {
                             <th>Level</th>
                             <th>Name</th>
                             <th>Ingredients</th>
-                            <th>XP Per</th>
                             <th>Herb</th>
                             <th>#</th>
                             <th>Total XP</th>

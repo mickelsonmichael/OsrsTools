@@ -16,17 +16,17 @@
     }
 
     render() {
+        console.log(this.props);
         return (
             <tr>
                 <td>{this.props.level}</td>
                 <td>{this.props.name}</td>
                 <td>{this.props.ingredients.join(",")}</td>
-                <td>{this.props.xp}</td>
                 <td>{this.props.herb}</td>
                 <td>
                     <input type="number" value={this.state.herbs} onChange={this.updateXp} min="0" />
                 </td>
-                <td>{this.props.xp * this.state.herbs }</td>
+                <td>{this.props.clean * this.props.xp * this.state.herbs }</td>
             </tr>
         );
     }
