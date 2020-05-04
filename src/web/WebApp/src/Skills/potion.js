@@ -1,4 +1,6 @@
-﻿export default class Potion extends React.Component {
+﻿import NumberFormat from 'react-number-format'
+
+export default class Potion extends React.Component {
     constructor(props) {
         super(props);
 
@@ -16,7 +18,8 @@
     }
 
     render() {
-        console.log(this.props);
+        let totalXp = (this.props.clean + this.props.xp) * this.state.herbs;
+
         return (
             <tr>
                 <td>{this.props.level}</td>
@@ -26,7 +29,9 @@
                 <td>
                     <input type="number" value={this.state.herbs} onChange={this.updateXp} min="0" />
                 </td>
-                <td>{this.props.clean * this.props.xp * this.state.herbs }</td>
+                <td>
+                    <NumberFormat value={totalXp} displayType={"text"} thousandSeparator={true} decimalScale={1} allowNegative={false} />
+                </td>
             </tr>
         );
     }

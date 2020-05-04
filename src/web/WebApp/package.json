@@ -17,7 +17,8 @@
     "immutability-helper": "^3.0.2",
     "mui-datatables": "^2.14.0",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "react-number-format": "^4.4.1"
   },
   "devDependencies": {
     "babel-loader": "^7.1.5",
