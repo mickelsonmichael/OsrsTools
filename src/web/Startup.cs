@@ -51,8 +51,12 @@ namespace web
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
+                    name: "Skills",
+                  pattern: "{area:exists}/{controller=Herblore}/{action=Index}");
+
+                endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}");
             });
         }
     }
