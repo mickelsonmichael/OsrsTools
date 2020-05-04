@@ -5,14 +5,14 @@ namespace Domain.Skills
     public class Potion
     {
         public string Name { get; }
-        public short XP { get; }
+        public double XP { get; }
         public byte Level { get; }
         public string Herb { get; }
         public ISet<string> Ingredients { get; }
 
         public Potion(
             string name,
-            short xp,
+            double xp,
             byte level,
             string herb,
             ISet<string> ingredients

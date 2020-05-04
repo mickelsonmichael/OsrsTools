@@ -1,12 +1,11 @@
-using Microsoft.Extensions.Logging;
-using Services.Interfaces.Skills;
-using Domain.Skills;
-using Microsoft.Extensions.Options;
 using Domain;
-using System.Linq;
-using System.IO;
+using Domain.Skills;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
+using Services.Interfaces.Skills;
 using System.Collections.Generic;
+using System.IO;
 
 namespace Services.Skills
 {
@@ -14,7 +13,7 @@ namespace Services.Skills
     {
         private readonly ILogger<JsonHerbloreService> _logger;
         private readonly string _dataFileName;
-        private Herblore _herblore;
+        private readonly Herblore _herblore;
 
         public JsonHerbloreService(
             ILogger<JsonHerbloreService> logger,
@@ -23,9 +22,7 @@ namespace Services.Skills
         {
             _logger = logger;
             _dataFileName = config.Value
-                .SkillData
-                .Single(x => x.SkillName == "Herblore")
-                .FileName;
+                .SkillData["Herblore"];
 
             _herblore = ReadJson();
         }
