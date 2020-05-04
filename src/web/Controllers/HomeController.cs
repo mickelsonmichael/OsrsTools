@@ -1,43 +1,23 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Services.Interfaces;
-using Services.Utilities;
 using System.Diagnostics;
 using web.Models;
+using Web.Utilities;
 
 namespace web.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : PlayerInfoController
     {
         public IActionResult Index() => View();
 
         [HttpPost]
-        public IActionResult SetPlayerName(
-            string playerName
-        )
+        public IActionResult SetPlayerName(string playerName)
         {
-            if (string.IsNullOrWhiteSpace(playerName))
-            {
-                ControllerContext
-                    .HttpContext
-                    .Session
-                    .ClearPlayerName();
-            }
-            else
-            {
-                ControllerContext
-                    .HttpContext
-                    .Session
-                    .SetPlayerName(playerName);
-            }
+            SetOrClearPlayer(playerName);
 
-            var returnUrl = new System.Uri(ControllerContext.HttpContext.Request.Headers["Referer"]);
+            var returnUrl = GetUrlReferrer();
 
-            if (!string.Equals(
-                    returnUrl.Host,
-                    HttpContext.Request.Host.Host,
-                    System.StringComparison.InvariantCultureIgnoreCase)
-            )
+            if (!string.Equals(returnUrl.Host, HttpContext.Request.Host.Host, System.StringComparison.InvariantCultureIgnoreCase))
             {
                 return RedirectToAction(nameof(Index));
             }
