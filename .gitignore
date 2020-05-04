@@ -94,5 +94,6 @@ csx/
 *.build.csdef
 
 # React
-web/WebApp/*
+src/web/WebApp/*
+src/web/wwwroot/js/*
 node_modules/
