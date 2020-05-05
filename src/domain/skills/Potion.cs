@@ -9,6 +9,8 @@ namespace Domain.Skills
         public double CleanXP { get; }
         public byte Level { get; }
         public string Herb { get; }
+        public string CleanFilename { get; }
+        public string GrimyFilename { get; }
         public ISet<string> Ingredients { get; }
 
         public Potion(
@@ -17,6 +19,8 @@ namespace Domain.Skills
             double cleanXp,
             byte level,
             string herb,
+            string cleanFilename,
+            string grimyFilename,
             ISet<string> ingredients
         )
         {
@@ -26,6 +30,8 @@ namespace Domain.Skills
             Level = level;
             Herb = herb;
             Ingredients = ingredients;
+            GrimyFilename = grimyFilename;
+            CleanFilename = cleanFilename;
         }
     }
 }
