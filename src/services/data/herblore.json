@@ -19,6 +19,7 @@
   "Potions": [
     {
       "Name": "Attack potion",
+      "PotionFilename": "Attack_potion.png",
       "XP": 25,
       "CleanXp": 2.5,
       "Herb": "Guam leaf",
@@ -31,6 +32,7 @@
     },
     {
       "Name": "Antipoison",
+      "PotionFilename": "Antipoison.png",
       "XP": 37.5,
       "CleanXp": 3.8,
       "Herb": "Marrentill", 
@@ -43,6 +45,7 @@
     },
     {
       "Name": "Strength potion",
+      "PotionFilename": "Strength_potion.png",
       "XP": 50,
       "CleanXp": 5,
       "Herb": "Tarromin", 
@@ -55,6 +58,7 @@
     },
     {
       "Name": "Serum 207",
+      "PotionFilename": "Serum_207.png",
       "XP": 50,
       "CleanXp": 5,
       "Herb": "Tarromin", 
@@ -67,6 +71,7 @@
     },
     {
       "Name": "Compost potion",
+      "PotionFilename": "Compost_potion.png",
       "XP": 60,
       "CleanXp": 6.3,
       "Herb": "Harralander", 
@@ -79,6 +84,7 @@
     },
     {
       "Name": "Restore potion",
+      "PotionFilename": "Restore_potion.png",
       "XP": 62.5,
       "CleanXp": 6.3,
       "Herb": "Harralander", 
@@ -91,6 +97,7 @@
     },
     {
       "Name": "Blamish oil",
+      "PotionFilename": "Blamish_oil.png",
       "XP": 80,
       "CleanXp": 6.3,
       "Herb": "Harralander", 
@@ -103,6 +110,7 @@
     },
     {
       "Name": "Energy potion",
+      "PotionFilename": "Energy_potion.png",
       "XP": 67.5,
       "CleanXp": 6.3,
       "Herb": "Harralander", 
@@ -115,6 +123,7 @@
     },
     {
       "Name": "Defence potion",
+      "PotionFilename": "Defence_potion.png",
       "XP": 75,
       "CleanXp": 7.5,
       "Herb": "Ranarr weed", 
@@ -127,6 +136,7 @@
     },
     {
       "Name": "Agility potion",
+      "PotionFilename": "Agility_potion.png",
       "XP": 80,
       "CleanXp": 8,
       "Herb": "Cadantine", 
@@ -139,6 +149,7 @@
     },
     {
       "Name": "Combat potion",
+      "PotionFilename": "Combat_potion.png",
       "XP": 84,
       "CleanXp": 6.3,
       "Herb": "Harralander", 
@@ -151,6 +162,7 @@
     },
     {
       "Name": "Prayer potion",
+      "PotionFilename": "Prayer_potion.png",
       "XP": 87.5,
       "CleanXp": 7.5,
       "Herb": "Ranarr weed", 
@@ -163,6 +175,7 @@
     },
     {
       "Name": "Super attack",
+      "PotionFilename": "Super_attack.png",
       "XP": 100,
       "CleanXp": 8.8,
       "Herb": "Irit leaf", 
@@ -175,6 +188,7 @@
     },
     {
       "Name": "Superantipoison",
+      "PotionFilename": "Superantipoison.png",
       "XP": 106.3,
       "CleanXp": 8.8,
       "Herb": "Irit leaf", 
@@ -187,6 +201,7 @@
     },
     {
       "Name": "Fishing potion",
+      "PotionFilename": "Fishing_potion.png",
       "XP": 112.5,
       "CleanXp": 10,
       "Herb": "Avantoe", 
@@ -199,6 +214,7 @@
     },
     {
       "Name": "Super energy",
+      "PotionFilename": "Super_energy.png",
       "XP": 117.5,
       "CleanXp": 10,
       "Herb": "Avantoe", 
@@ -211,6 +227,7 @@
     },
     {
       "Name": "Hunter potion",
+      "PotionFilename": "Hunter_potion.png",
       "XP": 120,
       "CleanXp": 10,
       "Herb": "Avantoe", 
@@ -223,6 +240,7 @@
     },
     {
       "Name": "Super strength",
+      "PotionFilename": "Super_strength.png",
       "XP": 125,
       "CleanXp": 11.3,
       "Herb": "Kwuarm", 
@@ -235,6 +253,7 @@
     },
     {
       "Name": "Weapon poison",
+      "PotionFilename": "Weapon_poison.png",
       "XP": 137.5,
       "CleanXp": 11.3,
       "Herb": "Kwuarm", 
@@ -247,6 +266,7 @@
     },
     {
       "Name": "Super restore",
+      "PotionFilename": "Super_restore.png",
       "XP": 142.5,
       "CleanXp": 11.8,
       "Herb": "Snapdragon", 
@@ -259,6 +279,7 @@
     },
     {
       "Name": "Super defence",
+      "PotionFilename": "Super_defence.png",
       "XP": 150,
       "CleanXp": 12.5,
       "Herb": "Cadantine", 
@@ -271,6 +292,7 @@
     },
     {
       "Name": "Antidote+",
+      "PotionFilename": "Antidote_p.png",
       "XP": 155,
       "CleanXp": 8,
       "Herb": "Cadantine", 
@@ -283,6 +305,7 @@
     },
     {
       "Name": "Antifire potion",
+      "PotionFilename": "Antifire_potion.png",
       "XP": 157.5,
       "CleanXp": 13.1,
       "Herb": "Lantadyme", 
@@ -295,6 +318,7 @@
     },
     {
       "Name": "Ranging potion",
+      "PotionFilename": "Ranging_potion.png",
       "XP": 162.5,
       "CleanXp": 13.8,
       "Herb": "Dwarf weed", 
@@ -307,6 +331,7 @@
     },
     {
       "Name": "Magic potion",
+      "PotionFilename": "Magic_potion.png",
       "XP": 172.5,
       "CleanXp": 13.1,
       "Herb": "Lantadyme", 
@@ -319,6 +344,7 @@
     },
     {
       "Name": "Zamorak brew",
+      "PotionFilename": "Zamorak_brew.png",
       "XP": 175,
       "CleanXp": 15,
       "Herb": "Torstol", 
@@ -331,6 +357,7 @@
     },
     {
       "Name": "Antidote++",
+      "PotionFilename": "Antidote_pp.png",
       "XP": 177.5,
       "CleanXp": 8.8,
       "Herb": "Irit leaf", 
@@ -343,6 +370,7 @@
     },
     {
       "Name": "Bastion potion",
+      "PotionFilename": "Bastion_potion.png",
       "XP": 155,
       "CleanXp": 12.5,
       "Herb": "Cadantine", 
@@ -355,6 +383,7 @@
     },
     {
       "Name": "Battlemage potion",
+      "PotionFilename": "Battlemage_potion.png",
       "XP": 155,
       "CleanXp": 12.5,
       "Herb": "Cadantine", 
@@ -367,6 +396,7 @@
     },
     {
       "Name": "Saradomin brew",
+      "PotionFilename": "Saradomin_brew.png",
       "XP": 180,
       "CleanXp": 8,
       "Herb": "Cadantine", 

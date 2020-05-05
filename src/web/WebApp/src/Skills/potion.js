@@ -1,5 +1,6 @@
 ﻿import NumberFormat from 'react-number-format'
 const herbRootUrl = "images/herbs/"
+const potionRootUrl = "images/potions/"
 
 export default class Potion extends React.Component {
     constructor(props) {
@@ -35,7 +36,10 @@ export default class Potion extends React.Component {
             (
                 <tr key={"grimy"}>
                     <td>{this.props.potion.level}</td>
-                    <td>{this.props.potion.name}</td>
+                    <td>
+                        <img src={potionRootUrl + this.props.potion.potionFilename} alt={this.props.potion.name} width="12" height="18" className="row_img" />
+                        {this.props.potion.name}
+                    </td>
                     <td>{this.props.potion.ingredients.join(",")}</td>
                     <td>
                         <img src={herbRootUrl + this.props.potion.grimyFilename} alt={"Grimy " + this.props.potion.herb} height="18" width="22" className="row_img" />
@@ -52,7 +56,10 @@ export default class Potion extends React.Component {
             (
                 <tr key="clean">
                     <td>{this.props.potion.level}</td>
-                    <td>{this.props.potion.name}</td>
+                    <td>
+                        <img src={potionRootUrl + this.props.potion.potionFilename} alt={this.props.potion.name} width="12" height="18" className="row_img" />
+                        {this.props.potion.name}
+                    </td>
                     <td>{this.props.potion.ingredients.join(",")}</td>
                     <td>
                         <img src={herbRootUrl + this.props.potion.cleanFilename} alt={this.props.potion.herb} height="18" width="22" className="row_img" />

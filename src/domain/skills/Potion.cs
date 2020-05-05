@@ -5,6 +5,7 @@ namespace Domain.Skills
     public class Potion
     {
         public string Name { get; }
+        public string PotionFilename { get; }
         public double XP { get; }
         public double CleanXP { get; }
         public byte Level { get; }
@@ -15,6 +16,7 @@ namespace Domain.Skills
 
         public Potion(
             string name,
+            string potionFilename,
             double xp,
             double cleanXp,
             byte level,
@@ -25,6 +27,7 @@ namespace Domain.Skills
         )
         {
             Name = name;
+            PotionFilename = potionFilename;
             XP = xp;
             CleanXP = cleanXp;
             Level = level;
