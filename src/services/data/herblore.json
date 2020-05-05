@@ -1,7 +1,7 @@
 {
   "Herbs": [
     "Guam leaf",
-    "Marrentil",
+    "Marrentill",
     "Rogue's purse",
     "Tarromin",
     "Harralander",
@@ -19,9 +19,12 @@
   "Potions": [
     {
       "Name": "Attack potion",
+      "PotionFilename": "Attack_potion.png",
       "XP": 25,
       "CleanXp": 2.5,
       "Herb": "Guam leaf",
+      "CleanFilename": "Guam_leaf.png",
+      "GrimyFilename":  "Grimy_guam_leaf.png",
       "Level": 3,
       "Ingredients": [
         "Eye of newt"
@@ -29,9 +32,12 @@
     },
     {
       "Name": "Antipoison",
+      "PotionFilename": "Antipoison.png",
       "XP": 37.5,
       "CleanXp": 3.8,
-      "Herb": "Marrentil",
+      "Herb": "Marrentill", 
+      "CleanFilename": "Marrentill.png",
+      "GrimyFilename": "Grimy_marrentill.png",
       "Level": 5,
       "Ingredients": [
         "Unicorn horn dust"
@@ -39,9 +45,12 @@
     },
     {
       "Name": "Strength potion",
+      "PotionFilename": "Strength_potion.png",
       "XP": 50,
       "CleanXp": 5,
-      "Herb": "Tarromin",
+      "Herb": "Tarromin", 
+      "CleanFilename": "Tarromin.png",
+      "GrimyFilename": "Grimy_tarromin.png",
       "Level": 12,
       "Ingredients": [
         "Limpwurt root"
@@ -49,9 +58,12 @@
     },
     {
       "Name": "Serum 207",
+      "PotionFilename": "Serum_207.png",
       "XP": 50,
       "CleanXp": 5,
-      "Herb": "Tarromin",
+      "Herb": "Tarromin", 
+      "CleanFilename": "Tarromin.png",
+      "GrimyFilename": "Grimy_tarromin.png",
       "Level": 15,
       "Ingredients": [
         "Ashes"
@@ -59,9 +71,12 @@
     },
     {
       "Name": "Compost potion",
+      "PotionFilename": "Compost_potion.png",
       "XP": 60,
       "CleanXp": 6.3,
-      "Herb": "Harralander",
+      "Herb": "Harralander", 
+      "CleanFilename": "Harralander.png",
+      "GrimyFilename": "Grimy_harralander.png",
       "Level": 22,
       "Ingredients": [
         "Volcanic ash"
@@ -69,9 +84,12 @@
     },
     {
       "Name": "Restore potion",
+      "PotionFilename": "Restore_potion.png",
       "XP": 62.5,
       "CleanXp": 6.3,
-      "Herb": "Harralander",
+      "Herb": "Harralander", 
+      "CleanFilename": "Harralander.png",
+      "GrimyFilename": "Grimy_harralander.png",
       "Level": 22,
       "Ingredients": [
         "Red spiders' eggs"
@@ -79,9 +97,12 @@
     },
     {
       "Name": "Blamish oil",
+      "PotionFilename": "Blamish_oil.png",
       "XP": 80,
       "CleanXp": 6.3,
-      "Herb": "Harralander",
+      "Herb": "Harralander", 
+      "CleanFilename": "Harralander.png",
+      "GrimyFilename": "Grimy_harralander.png",
       "Level": 25,
       "Ingredients": [
         "Blamish snail slime"
@@ -89,9 +110,12 @@
     },
     {
       "Name": "Energy potion",
+      "PotionFilename": "Energy_potion.png",
       "XP": 67.5,
       "CleanXp": 6.3,
-      "Herb": "Harralander",
+      "Herb": "Harralander", 
+      "CleanFilename": "Harralander.png",
+      "GrimyFilename": "Grimy_harralander.png",
       "Level": 26,
       "Ingredients": [
         "Chocolate dust"
@@ -99,9 +123,12 @@
     },
     {
       "Name": "Defence potion",
+      "PotionFilename": "Defence_potion.png",
       "XP": 75,
       "CleanXp": 7.5,
-      "Herb": "Ranarr weed",
+      "Herb": "Ranarr weed", 
+      "CleanFilename": "Ranarr_weed.png",
+      "GrimyFilename": "Grimy_ranarr_weed.png",
       "Level": 30,
       "Ingredients": [
         "White berries"
@@ -109,9 +136,12 @@
     },
     {
       "Name": "Agility potion",
+      "PotionFilename": "Agility_potion.png",
       "XP": 80,
       "CleanXp": 8,
-      "Herb": "Toadflax",
+      "Herb": "Cadantine", 
+      "CleanFileName": "Toadflax.png", 
+      "GrimyFilename": "Grimy_toadflax.png",
       "Level": 34,
       "Ingredients": [
         "Toad's legs"
@@ -119,9 +149,12 @@
     },
     {
       "Name": "Combat potion",
+      "PotionFilename": "Combat_potion.png",
       "XP": 84,
       "CleanXp": 6.3,
-      "Herb": "Harralander",
+      "Herb": "Harralander", 
+      "CleanFilename": "Harralander.png",
+      "GrimyFilename": "Grimy_harralander.png",
       "Level": 36,
       "Ingredients": [
         "Goat horn dust"
@@ -129,9 +162,12 @@
     },
     {
       "Name": "Prayer potion",
+      "PotionFilename": "Prayer_potion.png",
       "XP": 87.5,
       "CleanXp": 7.5,
-      "Herb": "Ranarr weed",
+      "Herb": "Ranarr weed", 
+      "CleanFilename": "Ranarr_weed.png",
+      "GrimyFilename": "Grimy_ranarr_weed.png",
       "Level": 38,
       "Ingredients": [
         "Snape grass"
@@ -139,9 +175,12 @@
     },
     {
       "Name": "Super attack",
+      "PotionFilename": "Super_attack.png",
       "XP": 100,
       "CleanXp": 8.8,
-      "Herb": "Irit leaf",
+      "Herb": "Irit leaf", 
+      "CleanFilename": "Irit_leaf.png",
+      "GrimyFilename": "Grimy_irit_leaf.png",
       "Level": 45,
       "Ingredients": [
         "Eye of newt"
@@ -149,9 +188,12 @@
     },
     {
       "Name": "Superantipoison",
+      "PotionFilename": "Superantipoison.png",
       "XP": 106.3,
       "CleanXp": 8.8,
-      "Herb": "Irit leaf",
+      "Herb": "Irit leaf", 
+      "CleanFilename": "Irit_leaf.png",
+      "GrimyFilename": "Grimy_irit_leaf.png",
       "Level": 48,
       "Ingredients": [
         "Unicorn horn dust"
@@ -159,9 +201,12 @@
     },
     {
       "Name": "Fishing potion",
+      "PotionFilename": "Fishing_potion.png",
       "XP": 112.5,
       "CleanXp": 10,
-      "Herb": "Avantoe",
+      "Herb": "Avantoe", 
+      "CleanFilename": "Avantoe.png",
+      "GrimyFilename": "Grimy_avantoe.png",
       "Level": 50,
       "Ingredients": [
         "Snape grass"
@@ -169,9 +214,12 @@
     },
     {
       "Name": "Super energy",
+      "PotionFilename": "Super_energy.png",
       "XP": 117.5,
       "CleanXp": 10,
-      "Herb": "Avantoe",
+      "Herb": "Avantoe", 
+      "CleanFilename": "Avantoe.png",
+      "GrimyFilename": "Grimy_avantoe.png",
       "Level": 52,
       "Ingredients": [
         "Mort myre fungus"
@@ -179,9 +227,12 @@
     },
     {
       "Name": "Hunter potion",
+      "PotionFilename": "Hunter_potion.png",
       "XP": 120,
       "CleanXp": 10,
-      "Herb": "Avantoe",
+      "Herb": "Avantoe", 
+      "CleanFilename": "Avantoe.png",
+      "GrimyFilename": "Grimy_avantoe.png",
       "Level": 53,
       "Ingredients": [
         "Kebbit teeth dust"
@@ -189,9 +240,12 @@
     },
     {
       "Name": "Super strength",
+      "PotionFilename": "Super_strength.png",
       "XP": 125,
       "CleanXp": 11.3,
-      "Herb": "Kwuarm",
+      "Herb": "Kwuarm", 
+      "CleanFilename": "Kwuarm.png",
+      "GrimyFilename": "Grimy_kwuarm.png",
       "Level": 55,
       "Ingredients": [
         "Limpwurt rot"
@@ -199,9 +253,12 @@
     },
     {
       "Name": "Weapon poison",
+      "PotionFilename": "Weapon_poison.png",
       "XP": 137.5,
       "CleanXp": 11.3,
-      "Herb": "Kwuarm",
+      "Herb": "Kwuarm", 
+      "CleanFilename": "Kwuarm.png",
+      "GrimyFilename": "Grimy_kwuarm.png",
       "Level": 60,
       "Ingredients": [
         "Dragon scale dust"
@@ -209,9 +266,12 @@
     },
     {
       "Name": "Super restore",
+      "PotionFilename": "Super_restore.png",
       "XP": 142.5,
       "CleanXp": 11.8,
-      "Herb": "Snapdragon",
+      "Herb": "Snapdragon", 
+      "CleanFilename": "Snapdragon.png",
+      "GrimyFilename": "Grimy_snapdragon.png",
       "Level": 63,
       "Ingredients": [
         "Red spiders' eggs"
@@ -219,9 +279,12 @@
     },
     {
       "Name": "Super defence",
+      "PotionFilename": "Super_defence.png",
       "XP": 150,
       "CleanXp": 12.5,
-      "Herb": "Cadantine",
+      "Herb": "Cadantine", 
+      "CleanFileName": "Cadantine.png", 
+      "GrimyFilename": "Grimy_cadantine.png",
       "Level": 66,
       "Ingredients": [
         "White berries"
@@ -229,9 +292,12 @@
     },
     {
       "Name": "Antidote+",
+      "PotionFilename": "Antidote_p.png",
       "XP": 155,
       "CleanXp": 8,
-      "Herb": "Toadflax",
+      "Herb": "Cadantine", 
+      "CleanFileName": "Toadflax.png", 
+      "GrimyFilename": "Grimy_toadflax.png",
       "Level": 68,
       "Ingredients": [
         "Yew roots"
@@ -239,9 +305,12 @@
     },
     {
       "Name": "Antifire potion",
+      "PotionFilename": "Antifire_potion.png",
       "XP": 157.5,
       "CleanXp": 13.1,
-      "Herb": "Lantadyme",
+      "Herb": "Lantadyme", 
+      "CleanFilename": "Lantadyme.png",
+      "GrimyFilename": "Grimy_lantadyme.png",
       "Level": 69,
       "Ingredients": [
         "Dragon scale dust"
@@ -249,9 +318,12 @@
     },
     {
       "Name": "Ranging potion",
+      "PotionFilename": "Ranging_potion.png",
       "XP": 162.5,
       "CleanXp": 13.8,
-      "Herb": "Dwarf weed",
+      "Herb": "Dwarf weed", 
+      "CleanFilename": "Dwarf_weed.png",
+      "GrimyFilename": "Grimy_dwarf_weed.png",
       "Level": 72,
       "Ingredients": [
         "Wine of zamorak"
@@ -259,9 +331,12 @@
     },
     {
       "Name": "Magic potion",
+      "PotionFilename": "Magic_potion.png",
       "XP": 172.5,
       "CleanXp": 13.1,
-      "Herb": "Lantadyme",
+      "Herb": "Lantadyme", 
+      "CleanFilename": "Lantadyme.png",
+      "GrimyFilename": "Grimy_lantadyme.png",
       "Level": 76,
       "Ingredients": [
         "Potato cactus"
@@ -269,9 +344,12 @@
     },
     {
       "Name": "Zamorak brew",
+      "PotionFilename": "Zamorak_brew.png",
       "XP": 175,
       "CleanXp": 15,
-      "Herb": "Torstol",
+      "Herb": "Torstol", 
+      "CleanFilename": "Torstol.png",
+      "GrimyFilename": "Grimy_torstol.png",
       "Level": 76,
       "Ingredients": [
         "Jangerberries"
@@ -279,9 +357,12 @@
     },
     {
       "Name": "Antidote++",
+      "PotionFilename": "Antidote_pp.png",
       "XP": 177.5,
       "CleanXp": 8.8,
-      "Herb": "Irit leaf",
+      "Herb": "Irit leaf", 
+      "CleanFilename": "Irit_leaf.png",
+      "GrimyFilename": "Grimy_irit_leaf.png",
       "Level": 79,
       "Ingredients": [
         "Magic roots"
@@ -289,9 +370,12 @@
     },
     {
       "Name": "Bastion potion",
+      "PotionFilename": "Bastion_potion.png",
       "XP": 155,
       "CleanXp": 12.5,
-      "Herb": "Cadantine",
+      "Herb": "Cadantine", 
+      "CleanFileName": "Cadantine.png", 
+      "GrimyFilename": "Grimy_cadantine.png",
       "Level": 80,
       "Ingredients": [
         "Wins of zamorak"
@@ -299,9 +383,12 @@
     },
     {
       "Name": "Battlemage potion",
+      "PotionFilename": "Battlemage_potion.png",
       "XP": 155,
       "CleanXp": 12.5,
-      "Herb": "Cadantine",
+      "Herb": "Cadantine", 
+      "CleanFileName": "Cadantine.png", 
+      "GrimyFilename": "Grimy_cadantine.png",
       "Level": 80,
       "Ingredients": [
         "Potato cactus"
@@ -309,9 +396,12 @@
     },
     {
       "Name": "Saradomin brew",
+      "PotionFilename": "Saradomin_brew.png",
       "XP": 180,
       "CleanXp": 8,
-      "Herb": "Toadflax",
+      "Herb": "Cadantine", 
+      "CleanFileName": "Toadflax.png", 
+      "GrimyFilename": "Grimy_toadflax.png",
       "Level": 81,
       "Ingredients": [
         "Crushed bird's nest"
