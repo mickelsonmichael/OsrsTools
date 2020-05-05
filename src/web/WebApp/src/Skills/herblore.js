@@ -40,13 +40,7 @@ class Herblore extends React.Component {
                 .sort((a,b) => a.level - b.level)
                 .map((pot, i) => {
                 return (
-                    <Potion level={pot.level}
-                        name={pot.name}
-                        ingredients={pot.ingredients}
-                        xp={pot.xp}
-                        herb={pot.herb}
-                        clean={pot.cleanXP}
-                        key={i} />
+                    <Potion potion={pot} key={i} />
                 );
             });
 

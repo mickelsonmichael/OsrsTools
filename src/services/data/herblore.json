@@ -1,7 +1,7 @@
 {
   "Herbs": [
     "Guam leaf",
-    "Marrentil",
+    "Marrentill",
     "Rogue's purse",
     "Tarromin",
     "Harralander",
@@ -33,9 +33,9 @@
       "Name": "Antipoison",
       "XP": 37.5,
       "CleanXp": 3.8,
-      "Herb": "Marrentil", 
-      "CleanFilename": "Marrentil.png",
-      "GrimyFilename": "Grimy_marrentil.png",
+      "Herb": "Marrentill", 
+      "CleanFilename": "Marrentill.png",
+      "GrimyFilename": "Grimy_marrentill.png",
       "Level": 5,
       "Ingredients": [
         "Unicorn horn dust"

@@ -1,6 +1,11 @@
 ﻿
 /* Loading Icon from https://loading.io/css/ */
 
+.row_img {
+    vertical-align: sub;
+    margin-right: .5rem;
+}
+
 .lds-ellipsis {
     display: inline-block;
     position: relative;
