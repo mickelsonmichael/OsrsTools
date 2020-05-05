@@ -1,10 +1,10 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Herblore";
 }
 
-<div id="herblore-container" data-url="@Url.Action("Potions", "Herblore")">
-
+<div id="herblore-container" 
+     data-url="@Url.Action("Potions", "Herblore")"
+     data-hi="@Url.Action("GetSkillXp", "Home", new { area = "", playerName = Context.Session.GetPlayerName(), skill = "herblore" })">
 </div>
 
 @section scripts {
