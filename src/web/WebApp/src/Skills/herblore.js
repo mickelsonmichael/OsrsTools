@@ -20,17 +20,35 @@ class Herblore extends React.Component {
         this.updateCount = this.updateCount.bind(this);
         this.getPlayerXp = this.getPlayerXp.bind(this);
         this.updateTotal = this.updateTotal.bind(this);
+        this.getHerbs = this.getHerbs.bind(this);
+        this.getPotionsAndHerbs = this.getPotionsAndHerbs.bind(this);
+        this.calculateYield = this.calculateYield.bind(this);
 
-        this.getPotions();
+        this.getPotionsAndHerbs();
         this.getPlayerXp();
     }
 
+    getPotionsAndHerbs() {
+        Promise.all([
+            this.getPotions(),
+            this.getHerbs()
+        ]).then(([potions, herbs]) => {
+            this.setState({
+                potions: potions,
+                herbs: herbs,
+                yieldCalculation: true
+            });
+        });
+    }
+
+    getHerbs() {
+        return fetch(this.props.herbUrl)
+            .then(response => response.json());
+    }
+
     getPotions() {
-        fetch(this.props.url)
-            .then(response => response.json())
-            .then(json => {
-                this.setState({ potions: json });
-            })
+        return fetch(this.props.url)
+            .then(response => response.json());
     }
 
     getPlayerXp() {
@@ -41,6 +59,40 @@ class Herblore extends React.Component {
                     playerXp: Number(text)
                 });
             })
+    }
+
+    componentDidUpdate() {
+        if (this.state.yieldCalculation) {
+            this.calculateYield();
+        }
+    }
+
+    calculateYield() {
+        let compostType = 5;
+        let farmingLevel = 70;
+        let secatursBonus = .1;
+        let farmingCape = .05;
+        let patch = 0;
+        let attas = 0;
+        var updated = this.state.herbs.map(herb => {
+            let chanceToSave =
+                (
+                    ((((herb.level1Chance + 1) / 256) * (99 - farmingLevel)) / 98)
+                    + ((((herb.level99Chance + 1) / 256) * (farmingLevel - 1)) / 98)
+                )
+                * (1 + secatursBonus + farmingCape)
+                //* (1 + patch + attas)
+                + (1 / 256);
+
+            herb.yield = compostType / (1 - chanceToSave);
+            console.log(herb.name + " " + herb.yield);
+            return herb;
+        });
+
+        this.setState({
+            yieldCalculation: false,
+            herbs: updated
+        });
     }
 
     updateCount(e) {
@@ -65,6 +117,7 @@ class Herblore extends React.Component {
                 .map((pot, i) => {
                 return (
                     <Potion potion={pot}
+                        herb={this.state.herbs.filter(h => h.name === pot.herb)[0]}
                         key={i}
                         updateTotal={this.updateTotal} />
                 );
@@ -117,5 +170,6 @@ class Herblore extends React.Component {
 let container = document.getElementById("herblore-container");
 let url = container.dataset.url;
 let hiScoreUrl = container.dataset.hi;
+let herbUrl = container.dataset.herb;
 
-ReactDOM.render(<Herblore url={url} hiScoreUrl={hiScoreUrl} />, container);
+ReactDOM.render(<Herblore url={url} hiScoreUrl={hiScoreUrl} herbUrl={herbUrl} />, container);

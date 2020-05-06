@@ -46,7 +46,7 @@ export default class Potion extends React.Component {
         }
         else {
             originalXp = this.state.seedsXp;
-            newXp = newCount * averageHerbPerPatch * (this.props.potion.cleanXP + this.props.potion.xp);
+            newXp = newCount * this.props.herb.yield * (this.props.potion.cleanXP + this.props.potion.xp);
 
             this.setState({
                 seeds: newCount,
