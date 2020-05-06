@@ -16,6 +16,7 @@
   <ItemGroup>
     <EmbeddedResource Include="diaries.json" />
     <EmbeddedResource Include="data/herblore.json" />
+    <EmbeddedResource Include="data/farming.json" />
   </ItemGroup>
 
 </Project>
