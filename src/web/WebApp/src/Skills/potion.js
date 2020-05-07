@@ -14,47 +14,51 @@ export default class Potion extends React.Component {
             grimy: 0,
             grimyXp: 0,
             seeds: 0,
-            seedsXp: 0
+            seedsXp: 0,
         }
 
-        this.updateXp = this.updateXp.bind(this);
+        this.calculateSeedXp = this.calculateSeedXp.bind(this);
+        this.calculateGrimyXp = this.calculateGrimyXp.bind(this);
+        this.calculateCleanXp = this.calculateCleanXp.bind(this);
     }
 
-    updateXp(e) {
-        let type = e.target.dataset.type;
-        let newCount = e.target.value;
-        let originalXp = 0;
-        let newXp = 0;
-
-        if (type === "clean") {
-            originalXp = this.state.herbsXp;
-            newXp = newCount * this.props.potion.xp;
-
-            this.setState({
-                herbs: newCount,
-                herbsXp: newXp
-            });
+    componentDidUpdate(prevProps) {
+        if (prevProps.yield !== this.props.yield) {
+            this.calculateSeedXp(this.state.seeds);
         }
-        else if (type === "dirty") {
-            originalXp = this.state.grimyXp;
-            newXp = newCount * (this.props.potion.cleanXP + this.props.potion.xp);
+    }
 
-            this.setState({
-                grimy: newCount,
-                grimyXp: newXp
-            });
-        }
-        else {
-            originalXp = this.state.seedsXp;
-            newXp = newCount * this.props.herb.yield * (this.props.potion.cleanXP + this.props.potion.xp);
+    calculateSeedXp(seeds) {
+        let xp = seeds * this.props.yield * (this.props.potion.cleanXP + this.props.potion.xp);
 
-            this.setState({
-                seeds: newCount,
-                seedsXp: newXp
-            })
-        }
+        this.setState({
+            seeds: seeds,
+            seedsXp: xp
+        });
 
-        this.props.updateTotal(newXp - originalXp);
+        this.props.updateTotal(xp, 2);
+    }
+
+    calculateGrimyXp(herbs) {
+        let xp = herbs * (this.props.potion.cleanXP + this.props.potion.xp);
+
+        this.setState({
+            grimy: herbs,
+            grimyXp: xp
+        });
+
+        this.props.updateTotal(xp, 1);
+    }
+
+    calculateCleanXp(herbs) {
+        let xp = herbs * this.props.potion.xp;
+
+        this.setState({
+            herbs: herbs,
+            herbsXp: xp
+        });
+
+        this.props.updateTotal(xp, 0);
     }
 
     render() {
@@ -72,7 +76,7 @@ export default class Potion extends React.Component {
                         {this.props.potion.herb}
                     </td>
                     <td>
-                        <input type="number" data-type="clean" value={this.state.herbs} onChange={this.updateXp} min="0" />
+                        <input type="number" data-type="clean" value={this.state.herbs} onChange={(e) => this.calculateCleanXp(Number(e.target.value))} min="0" />
                     </td>
                     <td>
                         <NumberFormat value={this.state.herbsXp} displayType={"text"} thousandSeparator={true} decimalScale={1} allowNegative={false} />
@@ -92,7 +96,7 @@ export default class Potion extends React.Component {
                         Grimy {this.props.potion.herb}
                     </td>
                     <td>
-                        <input type="number" data-type="dirty" value={this.state.grimy} onChange={this.updateXp} min="0" />
+                        <input type="number" data-type="dirty" value={this.state.grimy} onChange={(e) => this.calculateGrimyXp(Number(e.target.value))} min="0" />
                     </td>
                     <td>
                         <NumberFormat value={this.state.grimyXp} displayType={"text"} thousandSeparator={true} decimalScale={1} allowNegative={false} />
@@ -112,7 +116,8 @@ export default class Potion extends React.Component {
                         {this.props.potion.herb} Seed
                     </td>
                     <td>
-                        <input type="number" data-type="seed" value={this.state.seeds} onChange={this.updateXp} min="0" />
+                        <input type="number" data-type="seed" value={this.state.seeds} onChange={(e) => this.calculateSeedXp(Number(e.target.value))} min="0" />
+                        (avg. yield: <NumberFormat value={this.props.yield} displayType={"text"} decimalScale={2} allowNegative={false} />)
                     </td>
                     <td>
                         ~<NumberFormat value={this.state.seedsXp} displayType={"text"} thousandSeparator={true} decimalScale={1} allowNegative={false} />
