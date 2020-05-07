@@ -14,7 +14,11 @@ class Herblore extends React.Component {
         this.state = {
             potions: [],
             totalXp: 0,
-            playerXp: 0
+            playerXp: 0,
+            farmingCape: false,
+            farmingLevel: 1,
+            compostType: 3,
+            secateurs: false
         };
         this.getPotions = this.getPotions.bind(this);
         this.updateCount = this.updateCount.bind(this);
@@ -68,23 +72,19 @@ class Herblore extends React.Component {
     }
 
     calculateYield() {
-        let compostType = 5;
-        let farmingLevel = 70;
-        let secatursBonus = .1;
-        let farmingCape = .05;
         let patch = 0;
         let attas = 0;
         var updated = this.state.herbs.map(herb => {
             let chanceToSave =
                 (
-                    ((((herb.level1Chance + 1) / 256) * (99 - farmingLevel)) / 98)
-                    + ((((herb.level99Chance + 1) / 256) * (farmingLevel - 1)) / 98)
+                    ((((herb.level1Chance + 1) / 256) * (99 - this.state.farmingLevel)) / 98)
+                    + ((((herb.level99Chance + 1) / 256) * (this.state.farmingLevel - 1)) / 98)
                 )
-                * (1 + secatursBonus + farmingCape)
+                * (1 + (this.state.secateurs ? .1 : 0) + (this.state.farmingCape ? 0.05 : 0))
                 //* (1 + patch + attas)
                 + (1 / 256);
 
-            herb.yield = compostType / (1 - chanceToSave);
+            herb.yield = (3 + this.state.compostType) / (1 - chanceToSave);
             console.log(herb.name + " " + herb.yield);
             return herb;
         });
@@ -125,6 +125,53 @@ class Herblore extends React.Component {
 
             return (
                 <div>
+                    <div className="card">
+                        <div className="card-body">
+                            <div className="row">
+                                <div className="col">
+                                    <div className="form-group">
+                                        <label htmlFor="farmingCape">
+                                            <input type="checkbox" 
+                                                    name="farmingCape" 
+                                                    id="farmingCape"
+                                                    className="mr-1" 
+                                                    onChange={ () => this.setState({ farmingCape: !this.state.farmingCape, yieldCalculation: true })} />
+                                            Farming Cape
+                                        </label>
+                                    </div>
+                                    <div className="form-group">
+                                        <label htmlFor="secateurs">
+                                            <input type="checkbox"
+                                                name="secateurs"
+                                                id="secateurs"
+                                                className="mr-1"
+                                                value={this.state.secateurs}
+                                                onChange={ () => this.setState({ secateurs: !this.state.secateurs, yieldCalculation: true })} />
+                                            Magic Secateurs
+                                        </label>
+                                    </div>
+                                </div>
+                                <div className="col">
+                                    <div className="form-group">
+                                        <label htmlFor="compostType">Compost Type</label>
+                                        <select name="compostType" 
+                                            className="form-control"
+                                            value={ this.state.compostType }
+                                            onChange={(e) => this.setState({ compostType: Number(e.target.value), yieldCalculation: true })}>
+                                            <option value={0}>None</option>
+                                            <option value={1}>Compost</option>
+                                            <option value={2}>Supercompost</option>
+                                            <option value={3}>Ultracompost</option>
+                                        </select>
+                                    </div>
+                                    <div className="form-group">
+                                        <label htmlFor="farmingLevel">Farming Level</label>
+                                        <input type="number" className="form-control" min="0" max="99" value={ this.state.farmingLevel } onChange={(e) => this.setState({ farmingLevel: Number(e.target.value), yieldCalculation: true })} />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     
                     <div className="text-muted mb-3">
                         <span className="display-4 float-right ml-4">Total XP: <NumberFormat value={this.state.totalXp} displayType={"text"} thousandSeparator={true} decimalScale={1} allowNegative={false} /></span>
