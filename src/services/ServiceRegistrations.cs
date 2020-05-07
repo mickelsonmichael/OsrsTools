@@ -11,10 +11,11 @@ namespace Services
         public static IServiceCollection AddAppServices(this IServiceCollection services)
         {
             // singletons
-            services.AddSingleton<IMemoryCache, MemoryCache>();
-            services.AddSingleton<IHiScoreService, HiScoreService>();
-            services.AddSingleton<IAchievementService, AchievementService>();
-            services.AddSingleton<IHerbloreService, JsonHerbloreService>();
+            services.AddSingleton<IMemoryCache, MemoryCache>()
+                .AddSingleton<IHiScoreService, HiScoreService>()
+                .AddSingleton<IAchievementService, AchievementService>()
+                .AddSingleton<IHerbloreService, JsonHerbloreService>()
+                .AddSingleton<IFarmingService, JsonFarmingService>();
 
             return services;
         }

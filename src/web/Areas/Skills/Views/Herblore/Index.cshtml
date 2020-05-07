@@ -4,7 +4,8 @@
 
 <div id="herblore-container" 
      data-url="@Url.Action("Potions", "Herblore")"
-     data-hi="@Url.Action("GetSkillXp", "Home", new { area = "", playerName = Context.Session.GetPlayerName(), skill = "herblore" })">
+     data-hi="@Url.Action("GetSkillXp", "Home", new { area = "", playerName = Context.Session.GetPlayerName(), skill = "herblore" })"
+     data-herb="@Url.Action("GetHerbs", "Farming")">
 </div>
 
 @section scripts {

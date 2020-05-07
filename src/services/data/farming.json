@@ -1,0 +1,130 @@
+{
+  "Herbs": [
+    {
+
+      "Name": "Guam leaf",
+      "FarmingLevel": 9,
+      "PlantXp": 11,
+      "HarvestXp": 12.5,
+      "Level1Chance": 25,
+      "Level99Chance": 80
+    },
+    {
+
+      "Name": "Marrentill",
+      "FarmingLevel": 14,
+      "PlantXp": 13,
+      "HarvestXp": 15,
+      "Level1Chance": 28,
+      "Level99Chance": 80
+    },
+    {
+
+      "Name": "Tarromin",
+      "FarmingLevel": 19,
+      "PlantXp": 16,
+      "HarvestXp": 18,
+      "Level1Chance": 31,
+      "Level99Chance": 80
+    },
+    {
+
+      "Name": "Harralander",
+      "FarmingLevel": 26,
+      "PlantXp": 22,
+      "HarvestXp": 24,
+      "Level1Chance": 36,
+      "Level99Chance": 80
+    },
+    {
+
+      "Name": "Ranarr weed",
+      "FarmingLevel": 32,
+      "PlantXp": 26.5,
+      "HarvestXp": 30.5,
+      "Level1Chance": 39,
+      "Level99Chance": 80
+    },
+    {
+
+      "Name": "Toadflax",
+      "FarmingLevel": 38,
+      "PlantXp": 34,
+      "HarvestXp": 38,
+      "Level1Chance": 43,
+      "Level99Chance": 80
+    },
+    {
+
+      "Name": "Irit leaf",
+      "FarmingLevel": 44,
+      "PlantXp": 43,
+      "HarvestXp": 49,
+      "Level1Chance": 46,
+      "Level99Chance": 80
+    },
+    {
+
+      "Name": "Avantoe",
+      "FarmingLevel": 50,
+      "PlantXp": 54.5,
+      "HarvestXp": 61.5,
+      "Level1Chance": 50,
+      "Level99Chance": 80
+    },
+    {
+
+      "Name": "Kwuarm",
+      "FarmingLevel": 56,
+      "PlantXp": 69,
+      "HarvestXp": 82,
+      "Level1Chance": 54,
+      "Level99Chance": 80
+    },
+    {
+
+      "Name": "Snapdragon",
+      "FarmingLevel": 62,
+      "PlantXp": 87,
+      "HarvestXp": 99,
+      "Level1Chance": 57,
+      "Level99Chance": 80
+    },
+    {
+
+      "Name": "Cadantine",
+      "FarmingLevel": 67,
+      "PlantXp": 107,
+      "HarvestXp": 120,
+      "Level1Chance": 60,
+      "Level99Chance": 80
+    },
+    {
+
+      "Name": "Lantadyme",
+      "FarmingLevel": 73,
+      "PlantXp": 134,
+      "HarvestXp": 151.5,
+      "Level1Chance": 64,
+      "Level99Chance": 80
+    },
+    {
+
+      "Name": "Dwarf weed",
+      "FarmingLevel": 79,
+      "PlantXp": 170.5,
+      "HarvestXp": 192,
+      "Level1Chance": 67,
+      "Level99Chance": 80
+    },
+    {
+
+      "Name": "Torstol",
+      "FarmingLevel": 85,
+      "PlantXp": 199.5,
+      "HarvestXp": 224.5,
+      "Level1Chance": 71,
+      "Level99Chance": 80
+    }
+  ]
+}
