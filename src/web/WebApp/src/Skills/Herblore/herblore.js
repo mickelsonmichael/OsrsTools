@@ -5,6 +5,7 @@ import Potion from './potion.js'
 import update from 'immutability-helper'
 import NumberFormat from 'react-number-format'
 import Patches from './patches.jsx';
+import HerbloreFilters from './herblore_filters.jsx';
 
 const expFor99 = 13034431;
 var bonusesCollapse = null;
@@ -12,7 +13,7 @@ var bonusesCollapse = null;
 class Herblore extends React.Component {
     constructor(props) {
         super(props);
-        console.log(props)
+
         this.state = {
             potions: [],
             farmingCape: false,
@@ -21,6 +22,12 @@ class Herblore extends React.Component {
             secateurs: false,
             attasSeed: false,
             diaryBonus: 0,
+            filter: {
+                potionsToHide: [],
+                showSeeds: true,
+                showClean: true,
+                showGrimy: true
+            },
             xps: [],
             patches: []
         };
@@ -32,6 +39,7 @@ class Herblore extends React.Component {
         this.getPotionsAndHerbs = this.getPotionsAndHerbs.bind(this);
         this.calculateYield = this.calculateYield.bind(this);
         this.updatePatches = this.updatePatches.bind(this);
+        this.updateFilters = this.updateFilters.bind(this);
 
         this.getPotionsAndHerbs();
     }
@@ -72,6 +80,18 @@ class Herblore extends React.Component {
             if (btn) {
                 bonusesCollapse = new Collapse(btn);
             }
+        }
+    }
+
+    updateFilters(newFilter) {
+        let currentFilter = this.state.filter;
+
+        if (!this.areEquivalent(newFilter.potionsToHide, currentFilter.potionsToHide)
+            || newFilter.showSeeds != currentFilter.showSeeds
+            || newFilter.showGrimy != currentFilter.showGrimy
+            || newFilter.showClean != currentFilter.showClean) {
+
+            this.setState({ filter: newFilter });
         }
     }
 
@@ -137,12 +157,16 @@ class Herblore extends React.Component {
     render() {
         if (this.state.potions.length > 0) {
             let data = this.state.potions
+                .filter((potion) => !this.state.filter.potionsToHide.includes(potion.name))
                 .map((pot, i) => {
                     return (
                         <Potion potion={pot}
                             yield={this.state.herbs.filter(h => h.name === pot.herb)[0].yield}
                             key={i}
-                            updateTotal={(xp, type) => this.updateTotal(xp, i, type)} />
+                            updateTotal={(xp, type) => this.updateTotal(xp, i, type)}
+                            showSeeds={this.state.filter.showSeeds}
+                            showGrimy={this.state.filter.showGrimy}
+                            showClean={this.state.filter.showClean} />
                     );
             });
 
@@ -268,6 +292,8 @@ class Herblore extends React.Component {
                         
                         
                     </div>
+
+                    <HerbloreFilters potions={this.state.potions.map((potion) => potion.name)} updateFilters={this.updateFilters} />
 
                     <div className="table-responsive">
                         <table className="table table-sm table-striped table-bordered">

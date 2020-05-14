@@ -61,9 +61,11 @@ export default class Potion extends React.Component {
     }
 
     render() {
-        let rows = [
-            (
-                <tr key={"grimy"}>
+        let rows = [];
+
+        if (this.props.showGrimy) {
+            rows.push(
+                <tr key="grimy">
                     <td>{this.props.potion.level}</td>
                     <td>
                         <img src={potionRootUrl + this.props.potion.potionFilename} alt={this.props.potion.name} width="12" height="18" className="row_img" />
@@ -81,8 +83,11 @@ export default class Potion extends React.Component {
                         <NumberFormat value={this.state.herbsXp} displayType={"text"} thousandSeparator={true} decimalScale={1} allowNegative={false} />
                     </td>
                 </tr>
-            ),
-            (
+            );
+        }
+
+        if (this.props.showClean) {
+            rows.push(
                 <tr key="clean">
                     <td>{this.props.potion.level}</td>
                     <td>
@@ -101,8 +106,11 @@ export default class Potion extends React.Component {
                         <NumberFormat value={this.state.grimyXp} displayType={"text"} thousandSeparator={true} decimalScale={1} allowNegative={false} />
                     </td>
                 </tr>
-            ),
-            (
+            );
+        }
+
+        if (this.props.showSeeds) {
+            rows.push(
                 <tr key="seed">
                     <td>{this.props.potion.level}</td>
                     <td>
@@ -122,8 +130,8 @@ export default class Potion extends React.Component {
                         ~<NumberFormat value={this.state.seedsXp} displayType={"text"} thousandSeparator={true} decimalScale={1} allowNegative={false} />
                     </td>
                 </tr>
-            )
-        ];
+            );
+        }
 
         return rows;
     }
