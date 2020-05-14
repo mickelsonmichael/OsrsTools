@@ -12,12 +12,11 @@ var bonusesCollapse = null;
 class Herblore extends React.Component {
     constructor(props) {
         super(props);
-
+        console.log(props)
         this.state = {
             potions: [],
-            playerXp: 0,
             farmingCape: false,
-            farmingLevel: 1,
+            farmingLevel: props.farmingLevelStart,
             compostType: 3,
             secateurs: false,
             attasSeed: false,
@@ -25,9 +24,9 @@ class Herblore extends React.Component {
             xps: [],
             patches: []
         };
+
         this.getPotions = this.getPotions.bind(this);
         this.updateCount = this.updateCount.bind(this);
-        this.getPlayerXp = this.getPlayerXp.bind(this);
         this.updateTotal = this.updateTotal.bind(this);
         this.getHerbs = this.getHerbs.bind(this);
         this.getPotionsAndHerbs = this.getPotionsAndHerbs.bind(this);
@@ -35,7 +34,6 @@ class Herblore extends React.Component {
         this.updatePatches = this.updatePatches.bind(this);
 
         this.getPotionsAndHerbs();
-        this.getPlayerXp();
     }
 
     getPotionsAndHerbs() {
@@ -62,16 +60,6 @@ class Herblore extends React.Component {
     getPotions() {
         return fetch(this.props.url)
             .then(response => response.json());
-    }
-
-    getPlayerXp() {
-        fetch(this.props.hiScoreUrl)
-            .then(response =>  response.text())
-            .then(text => {
-                this.setState({
-                    playerXp: Number(text)
-                });
-            })
     }
 
     componentDidUpdate() {
@@ -250,9 +238,9 @@ class Herblore extends React.Component {
                             <div>
                                 Current Herblore XP:
                                 <span className="badge badge-secondary ml-1">
-                                    <NumberFormat value={this.state.playerXp} displayType={"text"} thousandSeparator={true} decimalScale={1} />
+                                    <NumberFormat value={this.props.herbloreXpStart} displayType={"text"} thousandSeparator={true} decimalScale={1} />
                                 </span>
-                                {this.state.playerXp == 0 &&
+                                {this.props.herbloreXpStart == 0 &&
                                     <em className="ml-2"><small>Either skill not ranked or you must enter a player name above.</small></em>
                                 }
                             </div>
@@ -261,7 +249,7 @@ class Herblore extends React.Component {
                                 <strong>
                                     XP Until 99:
                                     <span className="badge badge-primary ml-1">
-                                        <NumberFormat value={expFor99 - this.state.playerXp} displayType={"text"} thousandSeparator={true} allowNegative={false} decimalScale={1} />
+                                        <NumberFormat value={expFor99 - this.props.herbloreXpStart} displayType={"text"} thousandSeparator={true} allowNegative={false} decimalScale={1} />
                                     </span>
                                 </strong>
                             </div>
@@ -269,7 +257,7 @@ class Herblore extends React.Component {
                             <div>
                                 Remaining:
                                 <span className="badge badge-info ml-1">
-                                    <NumberFormat value={(expFor99 - this.state.playerXp) - totalXp} displayType={"text"} thousandSeparator={true} decimalScale={1} />
+                                    <NumberFormat value={(expFor99 - this.props.herbloreXpStart) - totalXp} displayType={"text"} thousandSeparator={true} decimalScale={1} />
                                 </span>
                             </div>
                         </div>
@@ -309,7 +297,8 @@ class Herblore extends React.Component {
 
 let container = document.getElementById("herblore-container");
 let url = container.dataset.url;
-let hiScoreUrl = container.dataset.hi;
+let farmingLevelStart = container.dataset.farmingLevel;
+let herbloreXpStart = container.dataset.herbloreXp;
 let herbUrl = container.dataset.herb;
 
-ReactDOM.render(<Herblore url={url} hiScoreUrl={hiScoreUrl} herbUrl={herbUrl} />, container);
+ReactDOM.render(<Herblore url={url} farmingLevelStart={farmingLevelStart} herbUrl={herbUrl} herbloreXpStart={herbloreXpStart} />, container);
