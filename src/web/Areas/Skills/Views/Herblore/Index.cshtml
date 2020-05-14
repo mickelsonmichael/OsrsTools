@@ -1,11 +1,14 @@
-﻿@{
+﻿@model (Domain.Base.Skill herblore, Domain.Base.Skill farming)
+
+@{
     ViewData["Title"] = "Herblore";
 }
 
 <div id="herblore-container" 
      data-url="@Url.Action("Potions", "Herblore")"
-     data-hi="@Url.Action("GetSkillXp", "Home", new { area = "", playerName = Context.Session.GetPlayerName(), skill = "herblore" })"
-     data-herb="@Url.Action("GetHerbs", "Farming")">
+     data-herb="@Url.Action("GetHerbs", "Farming")"
+     data-farming-level="@Model.farming.Level"
+     data-herblore-xp="@Model.herblore.XP">
 </div>
 
 @section scripts {

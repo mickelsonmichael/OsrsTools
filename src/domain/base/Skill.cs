@@ -16,5 +16,13 @@ namespace Domain.Base
             Rank = int.Parse(data[(int)SkillDetail.Rank]);
             XP = long.Parse(data[(int)SkillDetail.XP]);
         }
+
+        public static Skill NoSkill(SkillIndex skill)
+        {
+            return new Skill(
+                (int)skill,
+                new[] { "0", "0", "0" }
+            );
+        }
     }
 }

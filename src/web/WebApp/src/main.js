@@ -1,1 +1,1 @@
-﻿import Herblore from './Skills/herblore.js'
+﻿import Herblore from './Skills/Herblore/herblore.js'
