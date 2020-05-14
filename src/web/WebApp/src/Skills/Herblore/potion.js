@@ -2,7 +2,6 @@
 const herbRootUrl = "images/herbs/"
 const potionRootUrl = "images/potions/"
 const herbSeedUrl = "images/seeds/herb_seed.png"
-const averageHerbPerPatch = 6
 
 export default class Potion extends React.Component {
     constructor(props) {
