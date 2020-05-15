@@ -22,7 +22,8 @@
     hidePotion(potion, showPotion) {
         if (showPotion && this.state.potionsToHide.includes(potion)) {
             let newList = this.state.potionsToHide.map(x => x);
-            newList.splice(newList.indexOf(potion))
+            newList.splice(newList.indexOf(potion), 1);
+
             this.setState({ potionsToHide: newList }, () => this.props.updateFilters(this.state));
         }
         else if (!showPotion && !this.state.potionsToHide.includes(potion)) {
@@ -36,11 +37,12 @@
     render() {
         let potions = this.props.potions
             .map((potion, index) => {
+                let id = "filter-" + potion.replace(" ", "");
                 return (
                     <div className="form-check" key={index}>
-                        <label htmlFor={ "filter-" + potion } className="form-check-label">
+                        <label htmlFor={ id } className="form-check-label">
                             <input type="checkbox"
-                                id={"filter-" + potion}
+                                id={id}
                                 className="form-check-input"
                                 defaultChecked={!this.state.potionsToHide.includes(potion)}
                                 onChange={(e) => this.hidePotion(potion, e.target.checked)}  />
