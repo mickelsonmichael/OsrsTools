@@ -159,10 +159,11 @@ class Herblore extends React.Component {
             let data = this.state.potions
                 .filter((potion) => !this.state.filter.potionsToHide.includes(potion.name))
                 .map((pot, i) => {
+                    let key = "herb-" + pot.name.replace(" ", ","); 
                     return (
                         <Potion potion={pot}
                             yield={this.state.herbs.filter(h => h.name === pot.herb)[0].yield}
-                            key={i}
+                            key={key}
                             updateTotal={(xp, type) => this.updateTotal(xp, i, type)}
                             showSeeds={this.state.filter.showSeeds}
                             showGrimy={this.state.filter.showGrimy}
