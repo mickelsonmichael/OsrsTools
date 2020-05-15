@@ -50,7 +50,6 @@
     }
 
     render() {
-        console.log(this.state.potionsToHide);
         let potions = this.props.potions
             .filter((potion) => potion.toLowerCase().indexOf(this.state.search) > -1)
             .map((potion, index) => {
