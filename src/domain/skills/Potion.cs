@@ -4,6 +4,7 @@ namespace Domain.Skills
 {
     public class Potion
     {
+        public string Id => Name.ToLower().Replace(" ", "_");
         public string Name { get; }
         public string PotionFilename { get; }
         public double XP { get; }

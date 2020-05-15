@@ -51,7 +51,7 @@ class Herblore extends React.Component {
         ]).then(([potions, herbs]) => {
             let sortedPotions = potions.sort((a, b) => a.level - b.level);
             let xps = {};
-            potions.map((x) => xps[x.name.replace(" ", "")] = { clean: 0, grimy: 0, seeds: 0 });
+            potions.map((potion) => xps[potion.id] = { clean: 0, grimy: 0, seeds: 0 });
 
             this.setState({
                 potions: sortedPotions,
@@ -94,10 +94,17 @@ class Herblore extends React.Component {
             || newFilter.showClean != currentFilter.showClean) {
             let newXps = this.state.xps;
 
-            newFilter.potionsToHide.map((potionName) => {
-                newXps[potionName.replace(" ", "")].clean = 0;
-                newXps[potionName.replace(" ", "")].grimy = 0;
-                newXps[potionName.replace(" ", "")].seeds = 0;
+            newFilter.potionsToHide.map((potionId) => {
+                try {
+                    newXps[potionId].clean = 0;
+                    newXps[potionId].grimy = 0;
+                    newXps[potionId].seeds = 0;
+                }
+                catch (ex) {
+                    console.warn(ex);
+                    console.log(potionId);
+                    console.log(newXps);
+                }
             });
 
             this.setState({ filter: newFilter, xps: newXps });
@@ -164,7 +171,7 @@ class Herblore extends React.Component {
     }
 
     calculateXpForPotion(potion) {
-        let xps = this.state.xps[potion.name.replace(" ", "")];
+        let xps = this.state.xps[potion.id];
         return xps.grimy + xps.clean + xps.seeds;
     }
 
@@ -173,17 +180,16 @@ class Herblore extends React.Component {
             let totalXp = 0;
 
             let data = this.state.potions
-                .filter((potion) => !this.state.filter.potionsToHide.includes(potion.name))
-                .map((pot, i) => {
+                .filter((potion) => this.state.filter.potionsToHide.indexOf(potion.id) == -1)
+                .map((pot) => {
                     totalXp += this.calculateXpForPotion(pot);
 
-                    let id = pot.name.replace(" ", "");
-                    let key = "herb-" + pot.name.replace(" ", ","); 
+                    let key = "herb-" + pot.id; 
                     return (
                         <Potion potion={pot}
                             yield={this.state.herbs.filter(h => h.name === pot.herb)[0].yield}
                             key={key}
-                            updateTotal={(xp, type) => this.updateTotal(xp, id, type)}
+                            updateTotal={(xp, type) => this.updateTotal(xp, pot.id, type)}
                             showSeeds={this.state.filter.showSeeds}
                             showGrimy={this.state.filter.showGrimy}
                             showClean={this.state.filter.showClean} />
@@ -309,7 +315,7 @@ class Herblore extends React.Component {
                         
                     </div>
 
-                    <HerbloreFilters potions={this.state.potions.map((potion) => potion.name)} updateFilters={this.updateFilters} />
+                    <HerbloreFilters potions={this.state.potions} updateFilters={this.updateFilters} />
 
                     <div className="table-responsive">
                         <table className="table table-sm table-striped table-bordered">

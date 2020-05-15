@@ -39,7 +39,7 @@
 
     selectNone() {
         this.setState({
-            potionsToHide: this.props.potions
+            potionsToHide: this.props.potions.map((potion) => potion.id)
         }, () => this.props.updateFilters(this.state));
     }
 
@@ -51,20 +51,20 @@
 
     render() {
         let potions = this.props.potions
-            .filter((potion) => potion.toLowerCase().indexOf(this.state.search) > -1)
-            .map((potion, index) => {
-                let id = "filter-" + potion.replace(" ", "");
-                let isSelected = this.state.potionsToHide.indexOf(potion) == -1;
+            .filter((potion) => potion.name.toLowerCase().indexOf(this.state.search) > -1)
+            .map((potion) => {
+                let id = "filter-" + potion.id;
+                let isSelected = this.state.potionsToHide.indexOf(potion.id) == -1;
 
                 return (
-                    <div className="form-check" key={index}>
+                    <div className="form-check" key={potion.id}>
                         <label htmlFor={ id } className="form-check-label">
                             <input type="checkbox"
                                 id={id}
                                 className="form-check-input"
                                 checked={isSelected}
-                                onChange={(e) => this.hidePotion(potion, e.target.checked)}  />
-                            { potion }
+                                onChange={(e) => this.hidePotion(potion.id, e.target.checked)}  />
+                            { potion.name }
                         </label>
                     </div>
                 );
