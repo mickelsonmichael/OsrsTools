@@ -35,7 +35,7 @@ export default class Potion extends React.Component {
             seedsXp: xp
         });
 
-        this.props.updateTotal(xp, 2);
+        this.props.updateTotal(xp, "seeds");
     }
 
     calculateGrimyXp(herbs) {
@@ -46,7 +46,7 @@ export default class Potion extends React.Component {
             grimyXp: xp
         });
 
-        this.props.updateTotal(xp, 1);
+        this.props.updateTotal(xp, "grimy");
     }
 
     calculateCleanXp(herbs) {
@@ -57,7 +57,7 @@ export default class Potion extends React.Component {
             herbsXp: xp
         });
 
-        this.props.updateTotal(xp, 0);
+        this.props.updateTotal(xp, "clean");
     }
 
     render() {
