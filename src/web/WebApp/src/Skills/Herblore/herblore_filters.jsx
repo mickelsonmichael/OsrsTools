@@ -10,6 +10,8 @@
         };
 
         this.hidePotion = this.hidePotion.bind(this);
+        this.selectAll = this.selectAll.bind(this);
+        this.selectNone = this.selectNone.bind(this);
     }
 
     componentDidMount() {
@@ -34,17 +36,32 @@
         }
     }
 
+    selectNone() {
+        this.setState({
+            potionsToHide: this.props.potions
+        }, () => this.props.updateFilters(this.state));
+    }
+
+    selectAll() {
+        this.setState({
+            potionsToHide: []
+        }, () => this.props.updateFilters(this.state));
+    }
+
     render() {
+        console.log(this.state.potionsToHide);
         let potions = this.props.potions
             .map((potion, index) => {
                 let id = "filter-" + potion.replace(" ", "");
+                let isSelected = this.state.potionsToHide.indexOf(potion) == -1;
+                console.log(isSelected);
                 return (
                     <div className="form-check" key={index}>
                         <label htmlFor={ id } className="form-check-label">
                             <input type="checkbox"
                                 id={id}
                                 className="form-check-input"
-                                defaultChecked={!this.state.potionsToHide.includes(potion)}
+                                checked={isSelected}
                                 onChange={(e) => this.hidePotion(potion, e.target.checked)}  />
                             { potion }
                         </label>
@@ -114,8 +131,16 @@
                                             </div>
                                         </div>
                                     </div>
+
+                                    <div className="d-flex flex-columns flex-md-rows justify-content-between">
+                                        <h2>Potions</h2>
+                                        <div className="align-self-center">
+                                            <button type="button" className="btn btn-link btn-sm" onClick={this.selectAll}>Select All</button>
+                                            |
+                                            <button type="button" className="btn btn-link btn-sm" onClick={this.selectNone}>Select None</button>
+                                        </div>
+                                    </div>
                                     
-                                    <h2>Potions</h2>
 
                                     <div className="d-flex flex-columns justify-content-around">
                                         <div className="px-1 flex-grow-1">{potions.slice(0, potions.length/2)}</div>
