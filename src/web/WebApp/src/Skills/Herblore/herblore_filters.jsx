@@ -82,6 +82,10 @@
                         <div className="modal-content">
                             <div className="modal-body">
                                 <div className="form-horizontal">
+                                    <div className="alert alert-warning mb-1">
+                                        Removing a potion/type using the filters will reset the counts you've entered for that potion/type.
+                                    </div>
+
                                     <h2>Types</h2>
 
                                     <div className="d-flex flex-columns justify-content-around">
