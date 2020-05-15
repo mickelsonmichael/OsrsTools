@@ -6,10 +6,13 @@
             potionsToHide: [],
             showClean: true,
             showGrimy: true,
-            showSeeds: true
+            showSeeds: true,
+            search: ""
         };
 
         this.hidePotion = this.hidePotion.bind(this);
+        this.selectAll = this.selectAll.bind(this);
+        this.selectNone = this.selectNone.bind(this);
     }
 
     componentDidMount() {
@@ -22,7 +25,8 @@
     hidePotion(potion, showPotion) {
         if (showPotion && this.state.potionsToHide.includes(potion)) {
             let newList = this.state.potionsToHide.map(x => x);
-            newList.splice(newList.indexOf(potion))
+            newList.splice(newList.indexOf(potion), 1);
+
             this.setState({ potionsToHide: newList }, () => this.props.updateFilters(this.state));
         }
         else if (!showPotion && !this.state.potionsToHide.includes(potion)) {
@@ -33,18 +37,34 @@
         }
     }
 
+    selectNone() {
+        this.setState({
+            potionsToHide: this.props.potions.map((potion) => potion.id)
+        }, () => this.props.updateFilters(this.state));
+    }
+
+    selectAll() {
+        this.setState({
+            potionsToHide: []
+        }, () => this.props.updateFilters(this.state));
+    }
+
     render() {
         let potions = this.props.potions
-            .map((potion, index) => {
+            .filter((potion) => potion.name.toLowerCase().indexOf(this.state.search) > -1)
+            .map((potion) => {
+                let id = "filter-" + potion.id;
+                let isSelected = this.state.potionsToHide.indexOf(potion.id) == -1;
+
                 return (
-                    <div className="form-check" key={index}>
-                        <label htmlFor={ "filter-" + potion } className="form-check-label">
+                    <div className="form-check" key={potion.id}>
+                        <label htmlFor={ id } className="form-check-label">
                             <input type="checkbox"
-                                id={"filter-" + potion}
+                                id={id}
                                 className="form-check-input"
-                                defaultChecked={!this.state.potionsToHide.includes(potion)}
-                                onChange={(e) => this.hidePotion(potion, e.target.checked)}  />
-                            { potion }
+                                checked={isSelected}
+                                onChange={(e) => this.hidePotion(potion.id, e.target.checked)}  />
+                            { potion.name }
                         </label>
                     </div>
                 );
@@ -62,6 +82,10 @@
                         <div className="modal-content">
                             <div className="modal-body">
                                 <div className="form-horizontal">
+                                    <div className="alert alert-warning mb-1">
+                                        Removing a potion/type using the filters will reset the counts you've entered for that potion/type.
+                                    </div>
+
                                     <h2>Types</h2>
 
                                     <div className="d-flex flex-columns justify-content-around">
@@ -112,12 +136,24 @@
                                             </div>
                                         </div>
                                     </div>
-                                    
-                                    <h2>Potions</h2>
+
+                                    <div className="d-flex flex-columns flex-md-rows justify-content-between">
+                                        <h2>Potions</h2>
+                                        <div className="align-self-center">
+                                            <button type="button" className="btn btn-link btn-sm" onClick={this.selectAll}>Select All</button>
+                                            |
+                                            <button type="button" className="btn btn-link btn-sm" onClick={this.selectNone}>Select None</button>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <input type="text" onInput={(e) => this.setState({ search: e.target.value.toLowerCase() })}
+                                            className="form-control form-control-sm" placeholder="Search" />
+                                    </div>
 
                                     <div className="d-flex flex-columns justify-content-around">
-                                        <div className="px-1 flex-grow-1">{potions.slice(0, potions.length/2)}</div>
-                                        <div className="px-1 flex-grow-1">{potions.slice(potions.length/2)}</div>
+                                        <div className="px-1 flex-grow-1">{potions.slice(0, Math.ceil(potions.length/2))}</div>
+                                        <div className="px-1 flex-grow-1">{potions.slice(Math.ceil(potions.length/2))}</div>
                                     </div>
                                 </div>
                             </div>

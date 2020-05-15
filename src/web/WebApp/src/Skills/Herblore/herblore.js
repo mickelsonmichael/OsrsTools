@@ -28,7 +28,7 @@ class Herblore extends React.Component {
                 showClean: true,
                 showGrimy: true
             },
-            xps: [],
+            xps: {},
             patches: []
         };
 
@@ -50,11 +50,13 @@ class Herblore extends React.Component {
             this.getHerbs()
         ]).then(([potions, herbs]) => {
             let sortedPotions = potions.sort((a, b) => a.level - b.level);
+            let xps = {};
+            potions.map((potion) => xps[potion.id] = { clean: 0, grimy: 0, seeds: 0 });
 
             this.setState({
                 potions: sortedPotions,
                 herbs: herbs,
-                xps: sortedPotions.map(h => [0,0,0]),
+                xps: xps,
                 yieldCalculation: true
             });
         });
@@ -90,8 +92,22 @@ class Herblore extends React.Component {
             || newFilter.showSeeds != currentFilter.showSeeds
             || newFilter.showGrimy != currentFilter.showGrimy
             || newFilter.showClean != currentFilter.showClean) {
+            let newXps = this.state.xps;
 
-            this.setState({ filter: newFilter });
+            newFilter.potionsToHide.map((potionId) => {
+                try {
+                    newXps[potionId].clean = 0;
+                    newXps[potionId].grimy = 0;
+                    newXps[potionId].seeds = 0;
+                }
+                catch (ex) {
+                    console.warn(ex);
+                    console.log(potionId);
+                    console.log(newXps);
+                }
+            });
+
+            this.setState({ filter: newFilter, xps: newXps });
         }
     }
 
@@ -134,9 +150,9 @@ class Herblore extends React.Component {
         });
     }
 
-    updateTotal(xp, i, type) {
+    updateTotal(xp, id, type) {
         this.setState({
-            xps: update(this.state.xps, { [i]: { [type]: { $set: xp } } })
+            xps: update(this.state.xps, { [id]: { [type]: { $set: xp } } })
         });
     }
 
@@ -154,25 +170,31 @@ class Herblore extends React.Component {
         return original.sort().toString() == incoming.sort().toString();
     }
 
+    calculateXpForPotion(potion) {
+        let xps = this.state.xps[potion.id];
+        return xps.grimy + xps.clean + xps.seeds;
+    }
+
     render() {
         if (this.state.potions.length > 0) {
+            let totalXp = 0;
+
             let data = this.state.potions
-                .filter((potion) => !this.state.filter.potionsToHide.includes(potion.name))
-                .map((pot, i) => {
+                .filter((potion) => this.state.filter.potionsToHide.indexOf(potion.id) == -1)
+                .map((pot) => {
+                    totalXp += this.calculateXpForPotion(pot);
+
+                    let key = "herb-" + pot.id; 
                     return (
                         <Potion potion={pot}
                             yield={this.state.herbs.filter(h => h.name === pot.herb)[0].yield}
-                            key={i}
-                            updateTotal={(xp, type) => this.updateTotal(xp, i, type)}
+                            key={key}
+                            updateTotal={(xp, type) => this.updateTotal(xp, pot.id, type)}
                             showSeeds={this.state.filter.showSeeds}
                             showGrimy={this.state.filter.showGrimy}
                             showClean={this.state.filter.showClean} />
                     );
             });
-
-            let totalXp = this.state.xps
-                .map(subTotals => subTotals.reduce((a, b) => a + b))
-                .reduce((a, b) => a + b);
 
             return (
                 <div>
@@ -293,7 +315,7 @@ class Herblore extends React.Component {
                         
                     </div>
 
-                    <HerbloreFilters potions={this.state.potions.map((potion) => potion.name)} updateFilters={this.updateFilters} />
+                    <HerbloreFilters potions={this.state.potions} updateFilters={this.updateFilters} />
 
                     <div className="table-responsive">
                         <table className="table table-sm table-striped table-bordered">
