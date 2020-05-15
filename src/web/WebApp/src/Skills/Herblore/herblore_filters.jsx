@@ -6,7 +6,8 @@
             potionsToHide: [],
             showClean: true,
             showGrimy: true,
-            showSeeds: true
+            showSeeds: true,
+            search: ""
         };
 
         this.hidePotion = this.hidePotion.bind(this);
@@ -51,10 +52,11 @@
     render() {
         console.log(this.state.potionsToHide);
         let potions = this.props.potions
+            .filter((potion) => potion.toLowerCase().indexOf(this.state.search) > -1)
             .map((potion, index) => {
                 let id = "filter-" + potion.replace(" ", "");
                 let isSelected = this.state.potionsToHide.indexOf(potion) == -1;
-                console.log(isSelected);
+
                 return (
                     <div className="form-check" key={index}>
                         <label htmlFor={ id } className="form-check-label">
@@ -140,11 +142,15 @@
                                             <button type="button" className="btn btn-link btn-sm" onClick={this.selectNone}>Select None</button>
                                         </div>
                                     </div>
-                                    
+
+                                    <div>
+                                        <input type="text" onInput={(e) => this.setState({ search: e.target.value.toLowerCase() })}
+                                            className="form-control form-control-sm" placeholder="Search" />
+                                    </div>
 
                                     <div className="d-flex flex-columns justify-content-around">
-                                        <div className="px-1 flex-grow-1">{potions.slice(0, potions.length/2)}</div>
-                                        <div className="px-1 flex-grow-1">{potions.slice(potions.length/2)}</div>
+                                        <div className="px-1 flex-grow-1">{potions.slice(0, Math.ceil(potions.length/2))}</div>
+                                        <div className="px-1 flex-grow-1">{potions.slice(Math.ceil(potions.length/2))}</div>
                                     </div>
                                 </div>
                             </div>
