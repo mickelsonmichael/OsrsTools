@@ -26,7 +26,8 @@ namespace web
             services.AddLogging(config => config.AddConsole())
                 .AddSession()
                 .Configure<ServiceOptions>(Configuration.GetSection("Services"))
-                .AddAppServices();
+                .AddAppServices()
+                .AddApplicationInsightsTelemetry();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
