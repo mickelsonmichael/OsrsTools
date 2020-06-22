@@ -6,20 +6,11 @@ import Loading from "./loading";
 import Potion from "./potion";
 import Patches from "./patches";
 import HerbloreFilters from "./herblore_filters";
+import { updatePotions } from "../actions/herblore";
 
 const expFor99 = 13034431;
 
 class Herblore extends React.Component {
-  async getHerbs() {
-    const response = await fetch(this.props.herbUrl);
-    return await response.json();
-  }
-
-  async getPotions() {
-    const response = await fetch(this.props.url);
-    return await response.json();
-  }
-
   componentDidUpdate() {
     if (this.props.yieldCalculation) {
       this.calculateYield();
@@ -27,104 +18,94 @@ class Herblore extends React.Component {
   }
 
   updateFilters(newFilter) {
-    let currentFilter = this.props.filter;
-
-    if (
-      !this.areEquivalent(
-        newFilter.potionsToHide,
-        currentFilter.potionsToHide
-      ) ||
-      newFilter.showSeeds !== currentFilter.showSeeds ||
-      newFilter.showGrimy !== currentFilter.showGrimy ||
-      newFilter.showClean !== currentFilter.showClean
-    ) {
-      let newXps = this.props.xps;
-
-      newFilter.potionsToHide.map((potionId) => {
-        try {
-          newXps[potionId].clean = 0;
-          newXps[potionId].grimy = 0;
-          newXps[potionId].seeds = 0;
-        } catch (ex) {
-          console.warn(ex);
-          console.log(potionId);
-          console.log(newXps);
-        }
-      });
-
-      this.setState({ filter: newFilter, xps: newXps });
-    }
+    // let currentFilter = this.props.filter;
+    // if (
+    //   !this.areEquivalent(
+    //     newFilter.potionsToHide,
+    //     currentFilter.potionsToHide
+    //   ) ||
+    //   newFilter.showSeeds !== currentFilter.showSeeds ||
+    //   newFilter.showGrimy !== currentFilter.showGrimy ||
+    //   newFilter.showClean !== currentFilter.showClean
+    // ) {
+    //   let newXps = this.props.xps;
+    //   newFilter.potionsToHide.map((potionId) => {
+    //     try {
+    //       newXps[potionId].clean = 0;
+    //       newXps[potionId].grimy = 0;
+    //       newXps[potionId].seeds = 0;
+    //     } catch (ex) {
+    //       console.warn(ex);
+    //       console.log(potionId);
+    //       console.log(newXps);
+    //     }
+    //   });
+    //   this.setState({ filter: newFilter, xps: newXps });
+    // }
   }
 
   calculateYield() {
-    let updated = this.props.herbs.map((herb) => {
-      if (this.props.patches.length === 0) {
-        herb.yield = 0;
-        return herb;
-      }
-
-      let totalYields = 0;
-
-      for (let i = 0; i < this.props.patches.length; i++) {
-        let chanceToSave =
-          ((((herb.level1Chance + 1) / 256) * (99 - this.props.farmingLevel)) /
-            98 +
-            (((herb.level99Chance + 1) / 256) * (this.props.farmingLevel - 1)) /
-              98) *
-            (1 +
-              (this.props.secateurs ? 0.1 : 0) +
-              (this.props.farmingCape ? 0.05 : 0) +
-              (this.propsprops.attasSeed ? 0.05 : 0) +
-              this.props.patches[i]) +
-          1 / 256;
-
-        totalYields += (3 + this.props.compostType) / (1 - chanceToSave);
-      }
-
-      herb.yield = totalYields / this.props.patches.length;
-
-      return herb;
-    });
-
-    this.setState({
-      yieldCalculation: false,
-      herbs: updated,
-    });
+    // let updated = this.props.herbs.map((herb) => {
+    //   if (this.props.patches.length === 0) {
+    //     herb.yield = 0;
+    //     return herb;
+    //   }
+    //   let totalYields = 0;
+    //   for (let i = 0; i < this.props.patches.length; i++) {
+    //     let chanceToSave =
+    //       ((((herb.level1Chance + 1) / 256) * (99 - this.props.farmingLevel)) /
+    //         98 +
+    //         (((herb.level99Chance + 1) / 256) * (this.props.farmingLevel - 1)) /
+    //           98) *
+    //         (1 +
+    //           (this.props.secateurs ? 0.1 : 0) +
+    //           (this.props.farmingCape ? 0.05 : 0) +
+    //           (this.propsprops.attasSeed ? 0.05 : 0) +
+    //           this.props.patches[i]) +
+    //       1 / 256;
+    //     totalYields += (3 + this.props.compostType) / (1 - chanceToSave);
+    //   }
+    //   herb.yield = totalYields / this.props.patches.length;
+    //   return herb;
+    // });
+    // this.setState({
+    //   yieldCalculation: false,
+    //   herbs: updated,
+    // });
   }
 
   updateCount(e) {
-    let target = e.target;
-    this.setState({
-      potions: {
-        ...this.props.potions,
-        [target.dataset.index]: target.value,
-      },
-      // potions: update(this.props.potions, {
-      //   [target.dataset.index]: { num: { $set: target.value } },
-      // }),
-    });
+    // let target = e.target;
+    // this.setState({
+    //   potions: {
+    //     ...this.props.potions,
+    //     [target.dataset.index]: target.value,
+    //   },
+    //   // potions: update(this.props.potions, {
+    //   //   [target.dataset.index]: { num: { $set: target.value } },
+    //   // }),
+    // });
   }
 
   updateTotal(xp, id, type) {
-    this.setState({
-      xps: {
-        ...this.props.xps,
-        [id]: {
-          ...this.props.xps[id],
-          [type]: xp,
-        },
-      },
-      //xps: update(this.props.xps, { [id]: { [type]: { $set: xp } } }),
-    });
+    // this.setState({
+    //   xps: {
+    //     ...this.props.xps,
+    //     [id]: {
+    //       ...this.props.xps[id],
+    //       [type]: xp,
+    //     },
+    //   },
+    //   //xps: update(this.props.xps, { [id]: { [type]: { $set: xp } } }),
+    // });
   }
 
   updatePatches(patches) {
-    if (this.areEquivalent(this.props.patches, patches)) return;
-
-    this.setState({
-      patches: patches,
-      yieldCalculation: true,
-    });
+    // if (this.areEquivalent(this.props.patches, patches)) return;
+    // this.setState({
+    //   patches: patches,
+    //   yieldCalculation: true,
+    // });
   }
 
   areEquivalent(original, incoming) {
@@ -133,18 +114,23 @@ class Herblore extends React.Component {
   }
 
   calculateXpForPotion(potion) {
-    let xps = this.props.xps[potion.id];
+    let xps = this.props.xps[potion.id] || { grimy: 0, clean: 0, seeds: 0 };
     return xps.grimy + xps.clean + xps.seeds;
   }
 
+  componentWillMount() {
+    this.props.updatePotions();
+  }
+
   render() {
-    if (this.props.potions.length > 0) {
+    console.log(this.props);
+    if (this.props.potions) {
       let totalXp = 0;
 
       let data = this.props.potions
-        .filter(
-          (potion) => this.props.filter.potionsToHide.indexOf(potion.id) === -1
-        )
+        // .filter(
+        //   (potion) => this.props.filter.potionsToHide.indexOf(potion.id) === -1
+        // )
         .map((pot) => {
           totalXp += this.calculateXpForPotion(pot);
 
@@ -203,12 +189,12 @@ class Herblore extends React.Component {
                         name="farmingCape"
                         id="farmingCape"
                         className="form-check-input"
-                        onChange={(e) =>
-                          this.setState({
-                            farmingCape: e.target.checked,
-                            yieldCalculation: true,
-                          })
-                        }
+                        // onChange={(e) =>
+                        //   this.setState({
+                        //     farmingCape: e.target.checked,
+                        //     yieldCalculation: true,
+                        //   })
+                        //}
                       />
                       Farming Cape (+5%)
                     </label>
@@ -221,12 +207,12 @@ class Herblore extends React.Component {
                         id="secateurs"
                         className="form-check-input"
                         value={this.props.secateurs}
-                        onChange={(e) =>
-                          this.setState({
-                            secateurs: e.target.checked,
-                            yieldCalculation: true,
-                          })
-                        }
+                        // onChange={(e) =>
+                        //   this.setState({
+                        //     secateurs: e.target.checked,
+                        //     yieldCalculation: true,
+                        //   })
+                        // }
                       />
                       Magic Secateurs (+10%)
                     </label>
@@ -239,12 +225,12 @@ class Herblore extends React.Component {
                         id="attasSeed"
                         className="form-check-input"
                         value={this.props.attasSeed}
-                        onChange={(e) =>
-                          this.setState({
-                            attasSeed: e.target.checked,
-                            yieldCalculation: true,
-                          })
-                        }
+                        // onChange={(e) =>
+                        //   this.setState({
+                        //     attasSeed: e.target.checked,
+                        //     yieldCalculation: true,
+                        //   })
+                        // }
                       />
                       Attas Planted (+5%)
                     </label>
@@ -257,13 +243,14 @@ class Herblore extends React.Component {
                     <select
                       name="compostType"
                       className="form-control form-control-sm"
-                      value={this.props.compostType}
-                      onChange={(e) =>
-                        this.setState({
-                          compostType: Number(e.target.value),
-                          yieldCalculation: true,
-                        })
-                      }
+                      //value={this.props.compostType}
+                      defaultValue={this.props.compostType}
+                      // onChange={(e) =>
+                      //   this.setState({
+                      //     compostType: Number(e.target.value),
+                      //     yieldCalculation: true,
+                      //   })
+                      // }
                     >
                       <option value={0}>None</option>
                       <option value={1}>Compost (+1 Life)</option>
@@ -278,13 +265,13 @@ class Herblore extends React.Component {
                       className="form-control form-control-sm"
                       min="0"
                       max="99"
-                      value={this.props.farmingLevel}
-                      onChange={(e) =>
-                        this.setState({
-                          farmingLevel: Number(e.target.value),
-                          yieldCalculation: true,
-                        })
-                      }
+                      defaultValue={this.props.farmingLevel}
+                      // onChange={(e) =>
+                      //   this.setState({
+                      //     farmingLevel: Number(e.target.value),
+                      //     yieldCalculation: true,
+                      //   })
+                      // }
                     />
                   </div>
                 </div>
@@ -386,4 +373,32 @@ class Herblore extends React.Component {
   }
 }
 
-export default connect((state) => ({ ...state.herblore }))(Herblore);
+const mapStateToProps = (state) => {
+  console.log(state);
+  return {
+    potions: state.herblore.potions,
+    herbloreXpStart: 0,
+    farmingLevel: state.herblore.farmingLevel,
+    yieldCalculation: false,
+    attasSeed: false,
+    compostType: 3,
+    diaryBonus: 0,
+    farmingCape: false,
+    farmingLevel: 0,
+    filter: {
+      showSeeds: true,
+      showClean: true,
+      showGrimy: true,
+    },
+    herbs: state.herblore.herbs,
+    xps: [],
+  };
+};
+
+const mapActionsToProps = () => {
+  return {
+    updatePotions,
+  };
+};
+
+export default connect(mapStateToProps, mapActionsToProps)(Herblore);

@@ -1,62 +1,42 @@
 ﻿import React from "react";
+import { connect } from "react-redux";
 
-export default class Patches extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      falador: false,
-      kandarin: false,
-      morytania: false,
-      ardougne: false,
-      trollheim: false,
-      hosidius: false,
-      harmony: false,
-      weiss: false,
-      farmingGuild: false,
-      diaries: {
-        kandarinMedium: false,
-        kandarinHard: false,
-        kandarinElite: false,
-        kourendHard: false,
-      },
-    };
-  }
-
+class Patches extends React.Component {
   componentDidUpdate() {
     let patches = [];
 
-    if (this.state.falador) patches.push(0);
-    if (this.state.morytania) patches.push(0);
-    if (this.state.ardougne) patches.push(0);
-    if (this.state.trollheim) patches.push(0);
-    if (this.state.harmony) patches.push(0);
-    if (this.state.weiss) patches.push(0);
+    // if (this.state.falador) patches.push(0);
+    // if (this.state.morytania) patches.push(0);
+    // if (this.state.ardougne) patches.push(0);
+    // if (this.state.trollheim) patches.push(0);
+    // if (this.state.harmony) patches.push(0);
+    // if (this.state.weiss) patches.push(0);
 
-    if (this.state.kandarin) {
-      if (this.state.diaries.kandarinElite) {
-        patches.push(0.15);
-      } else if (this.state.diaries.kandarinHard) {
-        patches.push(0.1);
-      } else if (this.state.diaries.kandarinMedium) {
-        patches.push(0.05);
-      } else {
-        patches.push(0);
-      }
-    }
+    // if (this.state.kandarin) {
+    //   if (this.state.diaries.kandarinElite) {
+    //     patches.push(0.15);
+    //   } else if (this.state.diaries.kandarinHard) {
+    //     patches.push(0.1);
+    //   } else if (this.state.diaries.kandarinMedium) {
+    //     patches.push(0.05);
+    //   } else {
+    //     patches.push(0);
+    //   }
+    // }
 
-    if (this.state.hosidius) {
-      patches.push(this.state.diaries.kourendHard ? 0.05 : 0);
-    }
+    // if (this.state.hosidius) {
+    //   patches.push(this.state.diaries.kourendHard ? 0.05 : 0);
+    // }
 
-    if (this.state.farmingGuild) {
-      patches.push(this.state.diaries.kourendHard ? 0.05 : 0);
-    }
+    // if (this.state.farmingGuild) {
+    //   patches.push(this.state.diaries.kourendHard ? 0.05 : 0);
+    // }
 
-    this.props.updatePatches(patches);
+    // this.props.updatePatches(patches);
   }
 
   render() {
+    console.log(this.props);
     return (
       <div>
         <h3>Patches</h3>
@@ -69,10 +49,10 @@ export default class Patches extends React.Component {
                   type="checkbox"
                   id="patch-farmingGuild"
                   className="form-check-input"
-                  value={this.state.farmingGuild}
-                  onChange={(e) => {
-                    this.setState({ farmingGuild: e.target.checked });
-                  }}
+                  value={this.props.farmingGuild}
+                  // onChange={(e) => {
+                  //   this.setState({ farmingGuild: e.target.checked });
+                  // }}
                 />
                 Farming Guild
               </label>
@@ -84,10 +64,10 @@ export default class Patches extends React.Component {
                   type="checkbox"
                   id="patch-weiss"
                   className="form-check-input"
-                  value={this.state.weiss}
-                  onChange={(e) => {
-                    this.setState({ weiss: e.target.checked });
-                  }}
+                  value={this.props.weiss}
+                  // onChange={(e) => {
+                  //   this.setState({ weiss: e.target.checked });
+                  // }}
                 />
                 Weiss
               </label>
@@ -99,10 +79,10 @@ export default class Patches extends React.Component {
                   type="checkbox"
                   id="patch-harmony"
                   className="form-check-input"
-                  value={this.state.harmony}
-                  onChange={(e) => {
-                    this.setState({ harmony: e.target.checked });
-                  }}
+                  value={this.props.harmony}
+                  // onChange={(e) => {
+                  //   this.setState({ harmony: e.target.checked });
+                  // }}
                 />
                 Harmony Island
               </label>
@@ -114,10 +94,10 @@ export default class Patches extends React.Component {
                   type="checkbox"
                   id="patch-hosidius"
                   className="form-check-input"
-                  value={this.state.hosidius}
-                  onChange={(e) => {
-                    this.setState({ hosidius: e.target.checked });
-                  }}
+                  value={this.props.hosidius}
+                  // onChange={(e) => {
+                  //   this.setState({ hosidius: e.target.checked });
+                  // }}
                 />
                 Hosidius
               </label>
@@ -129,10 +109,10 @@ export default class Patches extends React.Component {
                   type="checkbox"
                   id="patch-trollheim"
                   className="form-check-input"
-                  value={this.state.trollheim}
-                  onChange={(e) => {
-                    this.setState({ trollheim: e.target.checked });
-                  }}
+                  value={this.props.trollheim}
+                  // onChange={(e) => {
+                  //   this.setState({ trollheim: e.target.checked });
+                  // }}
                 />
                 Trollheim
               </label>
@@ -144,10 +124,10 @@ export default class Patches extends React.Component {
                   type="checkbox"
                   id="patch-ardougne"
                   className="form-check-input"
-                  value={this.state.ardougne}
-                  onChange={(e) => {
-                    this.setState({ ardougne: e.target.checked });
-                  }}
+                  value={this.props.ardougne}
+                  // onChange={(e) => {
+                  //   this.setState({ ardougne: e.target.checked });
+                  // }}
                 />
                 Ardougne
               </label>
@@ -159,10 +139,10 @@ export default class Patches extends React.Component {
                   type="checkbox"
                   id="patch-Falador"
                   className="form-check-input"
-                  value={this.state.falador}
-                  onChange={(e) => {
-                    this.setState({ falador: e.target.checked });
-                  }}
+                  value={this.props.falador}
+                  // onChange={(e) => {
+                  //   this.setState({ falador: e.target.checked });
+                  // }}
                 />
                 Falador
               </label>
@@ -174,10 +154,10 @@ export default class Patches extends React.Component {
                   type="checkbox"
                   id="patch-morytania"
                   className="form-check-input"
-                  value={this.state.morytania}
-                  onChange={(e) => {
-                    this.setState({ morytania: e.target.checked });
-                  }}
+                  value={this.props.morytania}
+                  // onChange={(e) => {
+                  //   this.setState({ morytania: e.target.checked });
+                  // }}
                 />
                 Morytania
               </label>
@@ -189,10 +169,10 @@ export default class Patches extends React.Component {
                   type="checkbox"
                   id="patch-kandarin"
                   className="form-check-input"
-                  value={this.state.kandarin}
-                  onChange={(e) => {
-                    this.setState({ kandarin: e.target.checked });
-                  }}
+                  value={this.props.kandarin}
+                  // onChange={(e) => {
+                  //   this.setState({ kandarin: e.target.checked });
+                  // }}
                 />
                 Kandarin
               </label>
@@ -212,22 +192,22 @@ export default class Patches extends React.Component {
                   id="diary-kandarinMedium"
                   name="diary-kandarin"
                   className="form-check-input"
-                  value={this.state.diaries.kandarinMedium}
-                  onChange={(e) => {
-                    let val = e.target.checked;
+                  value={this.props.diaries.kandarinMedium}
+                  // onChange={(e) => {
+                  //   let val = e.target.checked;
 
-                    if (val) {
-                      this.setState({
-                        diaries: {
-                          kandarinMedium: true,
-                          kandarinHard: false,
-                          kandarinElite: false,
-                        },
-                      });
-                    } else {
-                      this.setState({ diaries: { kandarinMedium: false } });
-                    }
-                  }}
+                  //   if (val) {
+                  //     this.setState({
+                  //       diaries: {
+                  //         kandarinMedium: true,
+                  //         kandarinHard: false,
+                  //         kandarinElite: false,
+                  //       },
+                  //     });
+                  //   } else {
+                  //     this.setState({ diaries: { kandarinMedium: false } });
+                  //   }
+                  // }}
                 />
                 Kandarin Medium <small>(+5%)</small>
               </label>
@@ -240,22 +220,22 @@ export default class Patches extends React.Component {
                   id="diary-kandarinHard"
                   name="diary-kandarin"
                   className="form-check-input"
-                  value={this.state.diaries.kandarinHard}
-                  onChange={(e) => {
-                    let val = e.target.checked;
+                  value={this.props.diaries.kandarinHard}
+                  // onChange={(e) => {
+                  //   let val = e.target.checked;
 
-                    if (val) {
-                      this.setState({
-                        diaries: {
-                          kandarinMedium: false,
-                          kandarinHard: true,
-                          kandarinElite: false,
-                        },
-                      });
-                    } else {
-                      this.setState({ diaries: { kandarinHard: false } });
-                    }
-                  }}
+                  //   if (val) {
+                  //     this.setState({
+                  //       diaries: {
+                  //         kandarinMedium: false,
+                  //         kandarinHard: true,
+                  //         kandarinElite: false,
+                  //       },
+                  //     });
+                  //   } else {
+                  //     this.setState({ diaries: { kandarinHard: false } });
+                  //   }
+                  // }}
                 />
                 Kandarin Hard <small>(+10%)</small>
               </label>
@@ -268,22 +248,22 @@ export default class Patches extends React.Component {
                   id="diary-kandarinElite"
                   name="diary-kandarin"
                   className="form-check-input"
-                  value={this.state.diaries.kandarinElite}
-                  onChange={(e) => {
-                    let val = e.target.checked;
+                  value={this.props.diaries.kandarinElite}
+                  // onChange={(e) => {
+                  //   let val = e.target.checked;
 
-                    if (val) {
-                      this.setState({
-                        diaries: {
-                          kandarinMedium: false,
-                          kandarinHard: false,
-                          kandarinElite: true,
-                        },
-                      });
-                    } else {
-                      this.setState({ diaries: { kandarinElite: false } });
-                    }
-                  }}
+                  //   if (val) {
+                  //     this.setState({
+                  //       diaries: {
+                  //         kandarinMedium: false,
+                  //         kandarinHard: false,
+                  //         kandarinElite: true,
+                  //       },
+                  //     });
+                  //   } else {
+                  //     this.setState({ diaries: { kandarinElite: false } });
+                  //   }
+                  // }}
                 />
                 Kandarin Elite <small>(+15%)</small>
               </label>
@@ -296,15 +276,15 @@ export default class Patches extends React.Component {
                   id="diary-kourendHard"
                   name="diary-kourend"
                   className="form-check-input"
-                  value={this.state.diaries.kourendHard}
-                  onChange={(e) => {
-                    this.setState({
-                      diaries: { kourendHard: e.target.checked },
-                    });
-                  }}
+                  value={this.props.diaries.kourendHard}
+                  // onChange={(e) => {
+                  //   this.setState({
+                  //     diaries: { kourendHard: e.target.checked },
+                  //   });
+                  // }}
                 />
                 Kourend Hard{" "}
-                <small>(+5% to Farming Guild & Hosidius Patches)</small>
+                <small>(+5% to Farming Guild &amp; Hosidius Patches)</small>
               </label>
             </div>
           </div>
@@ -313,3 +293,7 @@ export default class Patches extends React.Component {
     );
   }
 }
+
+export default connect((state) => ({ ...state.herblore, diaries: [] }))(
+  Patches
+);

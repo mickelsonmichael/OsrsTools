@@ -1,67 +1,52 @@
 ﻿import React from "react";
-import { Modal } from "bootstrap";
+import { Modal } from "react-bootstrap";
+import { connect } from "react-redux";
 
-export default class HerbloreFilters extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      potionsToHide: [],
-      showClean: true,
-      showGrimy: true,
-      showSeeds: true,
-      search: "",
-    };
-
-    this.hidePotion = this.hidePotion.bind(this);
-    this.selectAll = this.selectAll.bind(this);
-    this.selectNone = this.selectNone.bind(this);
-  }
-
+class HerbloreFilters extends React.Component {
   hidePotion(potion, showPotion) {
-    if (showPotion && this.state.potionsToHide.includes(potion)) {
-      let newList = this.state.potionsToHide.map((x) => x);
-      newList.splice(newList.indexOf(potion), 1);
-
-      this.setState({ potionsToHide: newList }, () =>
-        this.props.updateFilters(this.state)
-      );
-    } else if (!showPotion && !this.state.potionsToHide.includes(potion)) {
-      let newList = this.state.potionsToHide.map((x) => x);
-      newList.push(potion);
-
-      this.setState({ potionsToHide: newList }, () =>
-        this.props.updateFilters(this.state)
-      );
-    }
+    // if (showPotion && this.props.potionsToHide.includes(potion)) {
+    //   let newList = this.props.potionsToHide.map((x) => x);
+    //   newList.splice(newList.indexOf(potion), 1);
+    //   this.setState({ potionsToHide: newList }, () =>
+    //     this.props.updateFilters(this.props)
+    //   );
+    // } else if (!showPotion && !this.props.potionsToHide.includes(potion)) {
+    //   let newList = this.props.potionsToHide.map((x) => x);
+    //   newList.push(potion);
+    //   this.setState({ potionsToHide: newList }, () =>
+    //     this.props.updateFilters(this.props)
+    //   );
+    // }
   }
 
   selectNone() {
-    this.setState(
-      {
-        potionsToHide: this.props.potions.map((potion) => potion.id),
-      },
-      () => this.props.updateFilters(this.state)
-    );
+    // this.setState(
+    //   {
+    //     potionsToHide: this.props.potions.map((potion) => potion.id),
+    //   },
+    //   () => this.props.updateFilters(this.props)
+    // );
   }
 
   selectAll() {
-    this.setState(
-      {
-        potionsToHide: [],
-      },
-      () => this.props.updateFilters(this.state)
-    );
+    // this.setState(
+    //   {
+    //     potionsToHide: [],
+    //   },
+    //   () => this.props.updateFilters(this.props)
+    // );
   }
 
   render() {
+    console.log(this.props);
+
     let potions = this.props.potions
       .filter(
-        (potion) => potion.name.toLowerCase().indexOf(this.state.search) > -1
+        (potion) => potion.name.toLowerCase().indexOf(this.props.search) > -1
       )
       .map((potion) => {
         let id = "filter-" + potion.id;
-        let isSelected = this.state.potionsToHide.indexOf(potion.id) == -1;
+        let isSelected = this.props.potionsToHide.indexOf(potion.id) == -1;
 
         return (
           <div className="form-check" key={potion.id}>
@@ -79,6 +64,7 @@ export default class HerbloreFilters extends React.Component {
         );
       });
 
+    console.log("here");
     return (
       <div>
         <button
@@ -110,13 +96,13 @@ export default class HerbloreFilters extends React.Component {
                         type="checkbox"
                         id="filter-clean"
                         className="form-check-input"
-                        defaultChecked={this.state.showClean}
-                        onChange={(e) => {
-                          let val = e.target.checked;
-                          this.setState({ showClean: val }, () =>
-                            this.props.updateFilters(this.state)
-                          );
-                        }}
+                        defaultChecked={this.props.showClean}
+                        // onChange={(e) => {
+                        //   let val = e.target.checked;
+                        //   this.setState({ showClean: val }, () =>
+                        //     this.props.updateFilters(this.props)
+                        //   );
+                        // }}
                       />
                       Clean
                     </label>
@@ -128,13 +114,13 @@ export default class HerbloreFilters extends React.Component {
                         type="checkbox"
                         id="filter-grimy"
                         className="form-check-input"
-                        defaultChecked={this.state.showGrimy}
-                        onChange={(e) => {
-                          let val = e.target.checked;
-                          this.setState({ showGrimy: val }, () =>
-                            this.props.updateFilters(this.state)
-                          );
-                        }}
+                        defaultChecked={this.props.showGrimy}
+                        // onChange={(e) => {
+                        //   let val = e.target.checked;
+                        //   this.setState({ showGrimy: val }, () =>
+                        //     this.props.updateFilters(this.props)
+                        //   );
+                        // }}
                       />
                       Grimy
                     </label>
@@ -148,14 +134,14 @@ export default class HerbloreFilters extends React.Component {
                         type="checkbox"
                         id="filter-seeds"
                         className="form-check-input"
-                        defaultChecked={this.state.showSeeds}
-                        onChange={(e) => {
-                          let val = e.target.checked;
+                        defaultChecked={this.props.showSeeds}
+                        // onChange={(e) => {
+                        //   let val = e.target.checked;
 
-                          this.setState({ showSeeds: val }, () =>
-                            this.props.updateFilters(this.state)
-                          );
-                        }}
+                        //   this.setState({ showSeeds: val }, () =>
+                        //     this.props.updateFilters(this.props)
+                        //   );
+                        // }}
                       />
                       Seeds
                     </label>
@@ -187,9 +173,9 @@ export default class HerbloreFilters extends React.Component {
               <div>
                 <input
                   type="text"
-                  onInput={(e) =>
-                    this.setState({ search: e.target.value.toLowerCase() })
-                  }
+                  // onInput={(e) =>
+                  //   this.setState({ search: e.target.value.toLowerCase() })
+                  // }
                   className="form-control form-control-sm"
                   placeholder="Search"
                 />
@@ -197,10 +183,10 @@ export default class HerbloreFilters extends React.Component {
 
               <div className="d-flex flex-columns justify-content-around">
                 <div className="px-1 flex-grow-1">
-                  {potions.slice(0, Math.ceil(potions.length / 2))}
+                  {/* {potions.slice(0, Math.ceil(potions.length / 2))} */}
                 </div>
                 <div className="px-1 flex-grow-1">
-                  {potions.slice(Math.ceil(potions.length / 2))}
+                  {/* {potions.slice(Math.ceil(potions.length / 2))} */}
                 </div>
               </div>
             </div>
@@ -210,3 +196,13 @@ export default class HerbloreFilters extends React.Component {
     );
   }
 }
+
+export default connect((state) => ({ ...state }))(HerbloreFilters);
+
+// this.props = {
+//   potionsToHide: [],
+//   showClean: true,
+//   showGrimy: true,
+//   showSeeds: true,
+//   search: "",
+// };
