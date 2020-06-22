@@ -1,18 +1,24 @@
-//   getPotionsAndHerbs() {
-//     Promise.all([this.getPotions(), this.getHerbs()]).then(
-//       ([potions, herbs]) => {
-//         let sortedPotions = potions.sort((a, b) => a.level - b.level);
-//         let xps = {};
-//         potions.map(
-//           (potion) => (xps[potion.id] = { clean: 0, grimy: 0, seeds: 0 })
-//         );
+import { put, takeEvery } from "redux-saga/effects";
+import { UPDATE_POTIONS, UPDATE_HERBS } from "../actions/herblore";
 
-//         this.setState({
-//           potions: sortedPotions,
-//           herbs: herbs,
-//           xps: xps,
-//           yieldCalculation: true,
-//         });
-//       }
-//     );
-//   }
+export default function* herbloreSaga() {
+  console.log("getting potions");
+
+  const pots = [
+    {
+      id: "str",
+      name: "Strength",
+      herb: "Guam",
+      ingredients: ["Newts Eye"],
+      level: 1,
+    },
+  ];
+  yield put({ type: UPDATE_POTIONS, potions: pots });
+
+  const herbs = [{ name: "Guam" }];
+  yield put({ type: UPDATE_HERBS, herbs });
+}
+
+function* onLoadAsync() {
+  yield takeEvery([UPDATE_POTIONS, UPDATE_HERBS], herbloreSaga);
+}

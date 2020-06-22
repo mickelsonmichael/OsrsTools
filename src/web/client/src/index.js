@@ -1,12 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { createStore } from "redux";
+import { createStore, applyMiddleware } from "redux";
+import createSagaMiddleware from "redux-saga";
 import { Provider } from "react-redux";
-import App from "./App";
 import reducer from "./reducers";
 import { BrowserRouter } from "react-router-dom";
 
-const store = createStore(reducer);
+import App from "./App";
+import herbloreSaga from "./sagas/herblore";
+
+const sagaMiddleware = createSagaMiddleware();
+const store = createStore(reducer, applyMiddleware(sagaMiddleware));
+
+sagaMiddleware.run(herbloreSaga);
 
 ReactDOM.render(
   <Provider store={store}>
